@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kamera_teman/ui/screens/admin_screen.dart';
-import 'package:kamera_teman/ui/screens/barang_screen.dart';
-import 'package:kamera_teman/ui/screens/laporan_screens.dart';
-import 'package:kamera_teman/ui/screens/member_screen.dart';
+import 'package:kamera_teman/utils/router.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -43,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                 title: 'Daftar Barang',
                 icon: Icons.camera_alt,
                 tapCallback: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => BarangScreen()));
+                  Navigator.pushNamed(context, RouteName.barangList);
                 },
               ),
               SizedBox(height: 15),
@@ -51,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                 title: 'Daftar Pelanggan',
                 icon: Icons.group,
                 tapCallback: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => MemberScreen()));
+                  Navigator.pushNamed(context, RouteName.memberList);
                 },
               ),
               SizedBox(height: 15),
@@ -59,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                 title: 'Daftar Admin',
                 icon: Icons.security,
                 tapCallback: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdminScreen()));
+                  Navigator.pushNamed(context, RouteName.adminList);
                 },
               ),
               SizedBox(height: 15),
@@ -67,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                 title: 'Laporan',
                 icon: Icons.format_align_left,
                 tapCallback: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => LaporanScreen()));
+                  Navigator.pushNamed(context, RouteName.laporan);
                 },
               ),
             ],

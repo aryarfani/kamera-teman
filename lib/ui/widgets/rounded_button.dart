@@ -18,7 +18,7 @@ class RoundedButton extends StatelessWidget {
         text,
         style: GoogleFonts.openSans(fontSize: 15, fontWeight: FontWeight.w600),
       ),
-      color: color != null ? color : Color(0xFFFF7F56),
+      color: color != null ? color : Color(0xFF403269),
       textColor: textColor != null ? textColor : Colors.white,
       onPressed: onPressed,
     );

@@ -6,10 +6,12 @@ class AppHeader extends StatelessWidget {
     @required this.mq,
     @required this.title,
     @required this.widget,
+    this.topPadding,
     this.callback,
     this.iconAdd = true,
   });
 
+  final double topPadding;
   final Size mq;
   final String title;
   final Widget widget;
@@ -27,8 +29,9 @@ class AppHeader extends StatelessWidget {
               stops: [0.0, 1.0])),
       padding: EdgeInsets.only(left: mq.width * 0.08, right: mq.width * 0.08, top: mq.height * 0.04),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          SizedBox(height: topPadding),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[

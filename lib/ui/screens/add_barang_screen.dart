@@ -39,6 +39,7 @@ class _AddBarangScreenState extends State<AddBarangScreen> {
                 iconAdd: false,
                 title: 'Tambah Barang',
                 widget: SingleChildScrollView(
+                  reverse: true,
                   child: Container(
                     padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                     child: Column(

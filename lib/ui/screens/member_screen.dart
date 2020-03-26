@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/providers/member_model.dart';
-import 'package:kamera_teman/ui/screens/add_member_screen.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/user_item.dart';
 import 'package:kamera_teman/utils/constant.dart';
+import 'package:kamera_teman/utils/router.dart';
 import 'package:provider/provider.dart';
 
 class MemberScreen extends StatelessWidget {
@@ -23,7 +23,7 @@ class MemberScreen extends StatelessWidget {
                 mq: mq,
                 title: 'Daftar Member',
                 callback: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddMemberScreen()));
+                  Navigator.pushNamed(context, RouteName.addMember);
                 },
                 widget: model.state == ViewState.Busy
                     ? Center(child: CupertinoActivityIndicator())

@@ -4,9 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/models/barang.dart';
 import 'package:kamera_teman/providers/barang_model.dart';
-import 'package:kamera_teman/ui/screens/add_barang_screen.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/utils/constant.dart';
+import 'package:kamera_teman/utils/router.dart';
 import 'package:provider/provider.dart';
 
 class BarangScreen extends StatelessWidget {
@@ -22,7 +22,7 @@ class BarangScreen extends StatelessWidget {
               child: AppHeader(
                 mq: mq,
                 callback: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddBarangScreen()));
+                  Navigator.pushNamed(context, RouteName.addBarang);
                 },
                 title: 'Daftar Barang',
                 widget: model.state == ViewState.Busy

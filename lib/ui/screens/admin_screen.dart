@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/providers/admin_model.dart';
-import 'package:kamera_teman/ui/screens/add_admin_screen.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/user_item.dart';
 import 'package:kamera_teman/utils/constant.dart';
+import 'package:kamera_teman/utils/router.dart';
 import 'package:provider/provider.dart';
 
 class AdminScreen extends StatelessWidget {
@@ -25,7 +25,7 @@ class AdminScreen extends StatelessWidget {
                 widget:
                     model.state == ViewState.Busy ? Center(child: CupertinoActivityIndicator()) : getAdminListUI(model),
                 callback: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddAdminScreen()));
+                  Navigator.pushNamed(context, RouteName.addAdmin);
                 },
               ),
             ),

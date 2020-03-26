@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kamera_teman/locator.dart';
-import 'package:kamera_teman/ui/screens/home_screen.dart';
+import 'package:kamera_teman/utils/router.dart';
 
 void main() {
   setupLocator();
@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Kamera Teman',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: HomeScreen(),
+      initialRoute: RouteName.login,
+      onGenerateRoute: Router.generateRoute,
       debugShowCheckedModeBanner: false,
     );
   }
