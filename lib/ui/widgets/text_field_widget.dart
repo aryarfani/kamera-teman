@@ -3,15 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TextFieldWidget extends StatefulWidget {
   final TextEditingController cText;
-
   final String hintText;
-
   final TextInputType keyboardType;
   final bool isPassword;
-
   final Function validator;
 
-  const TextFieldWidget({this.cText, this.validator, this.hintText, this.keyboardType, this.isPassword = false});
+  TextFieldWidget({this.cText, this.validator, this.hintText, this.keyboardType, this.isPassword = false});
 
   @override
   _TextFieldWidgetState createState() => _TextFieldWidgetState();
@@ -76,11 +73,6 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                 : Container()
           ],
         ),
-        // Divider(
-        //   color: Color(0xFF5F518A),
-        //   thickness: 0.5,
-        //   height: 0,
-        // )
       ],
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/models/barang.dart';
@@ -25,7 +26,7 @@ class BarangScreen extends StatelessWidget {
                   Navigator.pushNamed(context, RouteName.addBarang);
                 },
                 title: 'Daftar Barang',
-                widget: getBarangListUI(model.barangs),
+                widget: getBarangListUI(model),
               ),
             ),
           );
@@ -34,17 +35,36 @@ class BarangScreen extends StatelessWidget {
     );
   }
 
-  Widget getBarangListUI(List<Barang> barangs) {
+  Widget getBarangListUI(BarangProvider model) {
+    var barangs = model.barangs;
     return barangs == null
         ? Center(child: CupertinoActivityIndicator())
         : ListView.builder(
             itemCount: barangs.length,
-            itemBuilder: (context, index) => BarangItem(
-              name: barangs[index].nama,
-              harga: barangs[index].harga.toString(),
-              image: NetworkImage(linkImage + barangs[index].gambar),
-              stock: barangs[index].stock,
-            ),
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.only(bottom: 10),
+                child: Slidable(
+                  actionPane: SlidableBehindActionPane(),
+                  secondaryActions: <Widget>[
+                    IconSlideAction(
+                      caption: 'Delete',
+                      color: Colors.redAccent,
+                      icon: Icons.delete,
+                      onTap: () {
+                        model.deleteBarang(barang: barangs[index]);
+                      },
+                    )
+                  ],
+                  child: BarangItem(
+                    name: barangs[index].nama,
+                    harga: barangs[index].harga.toString(),
+                    image: NetworkImage(linkImage + barangs[index].gambar),
+                    stock: barangs[index].stock,
+                  ),
+                ),
+              );
+            },
           );
   }
 }
@@ -61,7 +81,6 @@ class BarangItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(8),
-      margin: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: Colors.white,

@@ -30,10 +30,10 @@ class ApiService {
     request.fields['password'] = password;
 
     var res = await request.send();
-
+    print(res.statusCode);
     if (res.statusCode == 200) {
       return 'success';
-    } else if (res.statusCode == 404) {
+    } else if (res.statusCode == 401) {
       return 'Email atau password salah';
     } else {
       return 'Login gagal, cek koneksi internet';

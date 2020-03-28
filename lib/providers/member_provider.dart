@@ -41,12 +41,12 @@ class MemberProvider extends BaseProvider {
 
   void deleteMember({@required Member member}) async {
     int id = member.id;
+    members.remove(member);
     try {
       await apiService.delete('member', id);
     } catch (e) {
       print(e);
     }
-    members.remove(member);
     notifyListeners();
   }
 }

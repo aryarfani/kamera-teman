@@ -37,4 +37,17 @@ class BarangProvider extends BaseProvider {
       print(e);
     }
   }
+
+  void deleteBarang({@required Barang barang}) async {
+    int id = barang.id;
+    barangs.remove(barang);
+
+    try {
+      await apiService.delete('barang', id);
+    } on Exception catch (e) {
+      print(e);
+    }
+
+    notifyListeners();
+  }
 }

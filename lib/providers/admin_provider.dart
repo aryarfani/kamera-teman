@@ -41,13 +41,14 @@ class AdminProvider extends BaseProvider {
 
   void deleteAdmin({@required Admin admin}) async {
     int id = admin.id;
+    admins.remove(admin);
+
     try {
       await apiService.delete('admin', id);
     } on Exception catch (e) {
       print(e);
     }
 
-    admins.remove(admin);
     notifyListeners();
   }
 }
