@@ -8,6 +8,7 @@ import 'package:kamera_teman/services/image.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/rounded_button.dart';
 import 'package:kamera_teman/utils/constant.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
 class AddBarangScreen extends StatefulWidget {
@@ -98,13 +99,14 @@ class _AddBarangScreenState extends State<AddBarangScreen> {
             color: Color(0xFF6C63FF),
             text: 'Post',
             textColor: Colors.white,
-            onPressed: () {
-              model.addBarang(
+            onPressed: () async {
+              var cek = await model.addBarang(
                 imageFile: _image,
                 nama: cNama.text,
                 stock: cStock.text,
                 harga: cHarga.text,
               );
+              cek ? showToast('Berhasil menambahkan barang') : showToast('Gagal menambahkan barang');
             },
           );
   }

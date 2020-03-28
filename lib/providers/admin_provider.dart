@@ -21,7 +21,7 @@ class AdminProvider extends BaseProvider {
     notifyListeners();
   }
 
-  void addAdmin(
+  Future addAdmin(
       {@required File imageFile,
       @required String nama,
       @required String alamat,

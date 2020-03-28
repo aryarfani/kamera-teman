@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppHeader extends StatelessWidget {
-  const AppHeader({
-    @required this.mq,
-    @required this.title,
-    @required this.widget,
-    this.topPadding,
-    this.callback,
-    this.iconAdd = true,
-  });
+  const AppHeader(
+      {@required this.mq,
+      @required this.title,
+      @required this.widget,
+      this.topPadding,
+      this.callback,
+      this.iconAdd = true,
+      this.isRegisterScreen = false});
 
   final double topPadding;
   final Size mq;
@@ -17,6 +17,7 @@ class AppHeader extends StatelessWidget {
   final Widget widget;
   final Function callback;
   final bool iconAdd;
+  final bool isRegisterScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +53,9 @@ class AppHeader extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           Container(
-            constraints: BoxConstraints(maxHeight: mq.height * 0.85),
+            constraints: isRegisterScreen ? null : BoxConstraints(maxHeight: mq.height * 0.85),
             child: widget,
           )
         ],

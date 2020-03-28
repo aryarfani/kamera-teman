@@ -2,6 +2,7 @@ import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/services/image.dart';
 import 'package:kamera_teman/utils/constant.dart';
 import 'package:http/http.dart' as http;
+import 'package:oktoast/oktoast.dart';
 
 class ApiService {
   ImageService imageService = locator<ImageService>();
@@ -17,6 +18,7 @@ class ApiService {
 
     print('delete $id done');
     if (res.statusCode == 200) {
+      showToast('Berhasil dihapus');
       return true;
     }
 

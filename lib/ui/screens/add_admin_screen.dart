@@ -8,6 +8,7 @@ import 'package:kamera_teman/services/image.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/rounded_button.dart';
 import 'package:kamera_teman/utils/constant.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
 class AddAdminScreen extends StatefulWidget {
@@ -104,8 +105,8 @@ class _AddAdminScreenState extends State<AddAdminScreen> {
             color: Color(0xFF6C63FF),
             text: 'Post',
             textColor: Colors.white,
-            onPressed: () {
-              model.addAdmin(
+            onPressed: () async {
+              var cek = await model.addAdmin(
                 imageFile: _image,
                 nama: cNama.text,
                 alamat: cAlamat.text,
@@ -113,6 +114,7 @@ class _AddAdminScreenState extends State<AddAdminScreen> {
                 phone: cPhone.text,
                 password: cPassword.text,
               );
+              cek ? showToast('Berhasil menambahkan admin') : showToast('Gagal menambahkan admin');
             },
           );
   }

@@ -10,6 +10,7 @@ import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/text_field_widget.dart';
 import 'package:kamera_teman/utils/constant.dart';
 import 'package:kamera_teman/utils/validate.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -44,111 +45,115 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: Consumer<MemberProvider>(
         builder: (context, model, child) {
           return Scaffold(
-              key: _scaffoldKey,
-              resizeToAvoidBottomInset: false,
-              resizeToAvoidBottomPadding: false,
-              body: SafeArea(
+            key: _scaffoldKey,
+            resizeToAvoidBottomInset: false,
+            resizeToAvoidBottomPadding: false,
+            body: SafeArea(
+              child: SingleChildScrollView(
+                reverse: true,
                 child: AppHeader(
                   mq: mq,
+                  isRegisterScreen: true,
                   title: 'Kamera Teman',
                   iconAdd: false,
-                  widget: SingleChildScrollView(
-                    reverse: true,
-                    child: Container(
-                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: Form(
-                        key: _formKey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            Center(
-                              child: _image == null
-                                  ? InkWell(
-                                      onTap: () {
-                                        buildShowDialog(context);
-                                      },
-                                      child: Container(
-                                        height: 150,
-                                        width: 150,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(90),
-                                          border: Border.all(width: 1),
-                                        ),
-                                        child: Center(child: Icon(Icons.add_a_photo, size: 50)),
+                  widget: Container(
+                    padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          Center(
+                            child: _image == null
+                                ? InkWell(
+                                    onTap: () {
+                                      buildShowDialog(context);
+                                    },
+                                    child: Container(
+                                      height: 170,
+                                      width: 170,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(90),
+                                        border: Border.all(width: 1),
                                       ),
-                                    )
-                                  : Container(
-                                      constraints: BoxConstraints(maxHeight: 350),
-                                      child: Image.file(
-                                        _image,
-                                      ),
+                                      child: Center(child: Icon(Icons.add_a_photo, size: 50)),
                                     ),
-                            ),
-                            TextFieldWidget(
-                              hintText: 'Nama',
-                              cText: cNama,
-                              keyboardType: TextInputType.emailAddress,
-                              validator: (value) {
-                                return Validate.requiredField(value, 'Name wajib diisi');
-                              },
-                            ),
-                            TextFieldWidget(
-                              hintText: 'E-mail',
-                              cText: cEmail,
-                              keyboardType: TextInputType.emailAddress,
-                              validator: (value) {
-                                return Validate.validateEmail(value);
-                              },
-                            ),
-                            TextFieldWidget(
-                              hintText: 'Alamat',
-                              cText: cAlamat,
-                              keyboardType: TextInputType.emailAddress,
-                              validator: (value) {
-                                return Validate.requiredField(value, 'Alamat wajib diisi');
-                              },
-                            ),
-                            TextFieldWidget(
-                              hintText: 'Phone',
-                              cText: cPhone,
-                              keyboardType: TextInputType.number,
-                              validator: (value) {
-                                return Validate.requiredField(value, 'Phone wajib diisi');
-                              },
-                            ),
-                            TextFieldWidget(
-                              hintText: 'Password',
-                              cText: cPassword,
-                              isPassword: true,
-                              validator: (value) {
-                                return Validate.requiredField(value, 'Password wajib diisi');
-                              },
-                            ),
-                            TextFieldWidget(
-                              hintText: 'Konfirmasi Password',
-                              cText: cPassword2,
-                              isPassword: true,
-                              validator: (value) {
-                                return Validate.validateConfirmPassword(cPassword, cPassword2);
-                              },
-                            ),
-                            SizedBox(height: 20),
-                            buildRaisedButton(model),
-                          ],
-                        ),
+                                  )
+                                : Container(
+                                    constraints: BoxConstraints(maxHeight: 170, maxWidth: 170),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(90),
+                                        border: Border.all(width: 1),
+                                        image: DecorationImage(image: FileImage(_image), fit: BoxFit.cover)),
+                                  ),
+                          ),
+                          TextFieldWidget(
+                            hintText: 'Nama',
+                            cText: cNama,
+                            keyboardType: TextInputType.emailAddress,
+                            validator: (value) {
+                              return Validate.requiredField(value, 'Name wajib diisi');
+                            },
+                          ),
+                          TextFieldWidget(
+                            hintText: 'E-mail',
+                            cText: cEmail,
+                            keyboardType: TextInputType.emailAddress,
+                            validator: (value) {
+                              return Validate.validateEmail(value);
+                            },
+                          ),
+                          TextFieldWidget(
+                            hintText: 'Alamat',
+                            cText: cAlamat,
+                            keyboardType: TextInputType.emailAddress,
+                            validator: (value) {
+                              return Validate.requiredField(value, 'Alamat wajib diisi');
+                            },
+                          ),
+                          TextFieldWidget(
+                            hintText: 'Phone',
+                            cText: cPhone,
+                            keyboardType: TextInputType.number,
+                            validator: (value) {
+                              return Validate.requiredField(value, 'Phone wajib diisi');
+                            },
+                          ),
+                          TextFieldWidget(
+                            hintText: 'Password',
+                            cText: cPassword,
+                            isPassword: true,
+                            validator: (value) {
+                              return Validate.requiredField(value, 'Password wajib diisi');
+                            },
+                          ),
+                          TextFieldWidget(
+                            hintText: 'Konfirmasi Password',
+                            cText: cPassword2,
+                            isPassword: true,
+                            isTheLast: true,
+                            validator: (value) {
+                              return Validate.validateConfirmPassword(cPassword, cPassword2);
+                            },
+                          ),
+                          SizedBox(height: 20),
+                          buildRaisedButton(model),
+                        ],
                       ),
                     ),
                   ),
                 ),
-              ));
+              ),
+            ),
+          );
         },
       ),
     );
   }
 
-  RaisedButton buildRaisedButton(MemberProvider model) {
+  Widget buildRaisedButton(MemberProvider model) {
     return model.state == ViewState.Busy
-        ? Center(child: CupertinoActivityIndicator())
+        ? Container(child: Center(child: CupertinoActivityIndicator()), height: 50)
         : RaisedButton(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             padding: EdgeInsets.all(13.0),
@@ -161,15 +166,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 color: Colors.white,
               ),
             ),
-            onPressed: () {
-              model.addMember(
-                imageFile: _image,
-                nama: cNama.text,
-                alamat: cAlamat.text,
-                email: cEmail.text,
-                phone: cPhone.text,
-                password: cPassword.text,
-              );
+            onPressed: () async {
+              if (_formKey.currentState.validate()) {
+                var cek = await model.addMember(
+                  imageFile: _image,
+                  nama: cNama.text,
+                  alamat: cAlamat.text,
+                  email: cEmail.text,
+                  phone: cPhone.text,
+                  password: cPassword.text,
+                );
+                if (cek != null) {
+                  showToast('Registrasi berhasil');
+                  Navigator.pop(context);
+                } else {
+                  showToast('Registrasi gagal');
+                }
+              }
             },
           );
   }

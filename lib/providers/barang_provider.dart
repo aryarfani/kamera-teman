@@ -21,7 +21,7 @@ class BarangProvider extends BaseProvider {
     notifyListeners();
   }
 
-  void addBarang({
+  Future addBarang({
     @required File imageFile,
     @required String nama,
     @required String stock,

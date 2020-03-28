@@ -7,6 +7,7 @@ import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/text_field_widget.dart';
 import 'package:kamera_teman/utils/constant.dart';
 import 'package:kamera_teman/utils/router.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -43,6 +44,7 @@ class LoginScreen extends StatelessWidget {
                           hintText: 'Password',
                           cText: cPassword,
                           isPassword: true,
+                          isTheLast: true,
                         ),
                         SizedBox(height: 20),
                         Text(
@@ -66,8 +68,10 @@ class LoginScreen extends StatelessWidget {
                                     color: Colors.white,
                                   )),
                           onPressed: () async {
+                            FocusScope.of(context).unfocus();
                             var res = await model.login(email: cEmail.text, password: cPassword.text);
                             if (res == 'success') {
+                              showToast('Login berhasil');
                               Navigator.pushReplacementNamed(context, RouteName.home);
                             }
                           },

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kamera_teman/locator.dart';
-import 'package:kamera_teman/models/barang.dart';
 import 'package:kamera_teman/providers/barang_provider.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/utils/constant.dart';
@@ -20,13 +19,15 @@ class BarangScreen extends StatelessWidget {
         builder: (context, model, child) {
           return Scaffold(
             body: SafeArea(
-              child: AppHeader(
-                mq: mq,
-                callback: () {
-                  Navigator.pushNamed(context, RouteName.addBarang);
-                },
-                title: 'Daftar Barang',
-                widget: getBarangListUI(model),
+              child: SingleChildScrollView(
+                child: AppHeader(
+                  mq: mq,
+                  callback: () {
+                    Navigator.pushNamed(context, RouteName.addBarang);
+                  },
+                  title: 'Daftar Barang',
+                  widget: getBarangListUI(model),
+                ),
               ),
             ),
           );

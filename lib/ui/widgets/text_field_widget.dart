@@ -7,8 +7,10 @@ class TextFieldWidget extends StatefulWidget {
   final TextInputType keyboardType;
   final bool isPassword;
   final Function validator;
+  final bool isTheLast;
 
-  TextFieldWidget({this.cText, this.validator, this.hintText, this.keyboardType, this.isPassword = false});
+  TextFieldWidget(
+      {this.cText, this.validator, this.hintText, this.keyboardType, this.isPassword = false, this.isTheLast = false});
 
   @override
   _TextFieldWidgetState createState() => _TextFieldWidgetState();
@@ -49,14 +51,15 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                 controller: widget.cText,
                 decoration: InputDecoration(
                   hintText: widget.hintText,
-                  // border: InputBorder.none,
-
                   hintStyle: GoogleFonts.lato(
                     color: Colors.black38,
                     fontWeight: FontWeight.w400,
                     fontSize: 15,
                   ),
                 ),
+                textInputAction: widget.isTheLast ? TextInputAction.done : TextInputAction.next,
+                onFieldSubmitted: (_) =>
+                    widget.isTheLast ? FocusScope.of(context).unfocus() : FocusScope.of(context).nextFocus(),
               ),
             ),
             widget.isPassword

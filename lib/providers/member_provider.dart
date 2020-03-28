@@ -21,7 +21,7 @@ class MemberProvider extends BaseProvider {
     notifyListeners();
   }
 
-  void addMember(
+  Future addMember(
       {@required File imageFile,
       @required String nama,
       @required String alamat,

@@ -8,6 +8,7 @@ import 'package:kamera_teman/services/image.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/rounded_button.dart';
 import 'package:kamera_teman/utils/constant.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
 class AddMemberScreen extends StatefulWidget {
@@ -104,8 +105,8 @@ class _AddMemberScreenState extends State<AddMemberScreen> {
             color: Color(0xFF6C63FF),
             text: 'Post',
             textColor: Colors.white,
-            onPressed: () {
-              model.addMember(
+            onPressed: () async {
+              var cek = await model.addMember(
                 imageFile: _image,
                 nama: cNama.text,
                 alamat: cAlamat.text,
@@ -113,6 +114,8 @@ class _AddMemberScreenState extends State<AddMemberScreen> {
                 phone: cPhone.text,
                 password: cPassword.text,
               );
+
+              cek ? showToast('Berhasil menambahkan pelanggan') : showToast('Gagal menambahkan pelanggan');
             },
           );
   }
