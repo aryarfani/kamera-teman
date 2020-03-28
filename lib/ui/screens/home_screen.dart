@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kamera_teman/utils/router.dart';
+import 'package:kamera_teman/core/utils/router.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

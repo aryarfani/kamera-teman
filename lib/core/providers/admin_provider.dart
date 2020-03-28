@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:kamera_teman/core/models/admin.dart';
+import 'package:kamera_teman/core/providers/base_provider.dart';
+import 'package:kamera_teman/core/services/admin_api.dart';
+import 'package:kamera_teman/core/utils/constant.dart';
 import 'package:kamera_teman/locator.dart';
-import 'package:kamera_teman/models/admin.dart';
-import 'package:kamera_teman/providers/base_provider.dart';
-import 'package:kamera_teman/services/admin_api.dart';
-import 'package:kamera_teman/utils/constant.dart';
 
 class AdminProvider extends BaseProvider {
   AdminApi adminApi = locator<AdminApi>();

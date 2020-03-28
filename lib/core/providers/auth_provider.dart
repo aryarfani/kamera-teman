@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:kamera_teman/locator.dart';
-import 'package:kamera_teman/providers/base_provider.dart';
-import 'package:kamera_teman/services/api.dart';
-import 'package:kamera_teman/utils/constant.dart';
+import 'package:kamera_teman/core/providers/base_provider.dart';
+import 'package:kamera_teman/core/services/api.dart';
+import 'package:kamera_teman/core/utils/constant.dart';
 
 class AuthProvider extends BaseProvider {
   ApiService apiService = locator<ApiService>();

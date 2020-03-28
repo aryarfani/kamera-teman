@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kamera_teman/locator.dart';
-import 'package:kamera_teman/providers/barang_provider.dart';
+import 'package:kamera_teman/core/providers/barang_provider.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
-import 'package:kamera_teman/utils/constant.dart';
-import 'package:kamera_teman/utils/router.dart';
+import 'package:kamera_teman/core/utils/constant.dart';
+import 'package:kamera_teman/core/utils/router.dart';
 import 'package:provider/provider.dart';
 
 class BarangScreen extends StatelessWidget {

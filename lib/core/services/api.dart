@@ -1,6 +1,6 @@
 import 'package:kamera_teman/locator.dart';
-import 'package:kamera_teman/services/image.dart';
-import 'package:kamera_teman/utils/constant.dart';
+import 'package:kamera_teman/core/services/image.dart';
+import 'package:kamera_teman/core/utils/constant.dart';
 import 'package:http/http.dart' as http;
 import 'package:oktoast/oktoast.dart';
 

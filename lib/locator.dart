@@ -1,13 +1,13 @@
 import 'package:get_it/get_it.dart';
-import 'package:kamera_teman/providers/admin_provider.dart';
-import 'package:kamera_teman/providers/auth_provider.dart';
-import 'package:kamera_teman/providers/barang_provider.dart';
-import 'package:kamera_teman/providers/member_provider.dart';
-import 'package:kamera_teman/services/admin_api.dart';
-import 'package:kamera_teman/services/api.dart';
-import 'package:kamera_teman/services/barang_api.dart';
-import 'package:kamera_teman/services/image.dart';
-import 'package:kamera_teman/services/member_api.dart';
+import 'package:kamera_teman/core/providers/admin_provider.dart';
+import 'package:kamera_teman/core/providers/auth_provider.dart';
+import 'package:kamera_teman/core/providers/barang_provider.dart';
+import 'package:kamera_teman/core/providers/member_provider.dart';
+import 'package:kamera_teman/core/services/admin_api.dart';
+import 'package:kamera_teman/core/services/api.dart';
+import 'package:kamera_teman/core/services/barang_api.dart';
+import 'package:kamera_teman/core/services/image.dart';
+import 'package:kamera_teman/core/services/member_api.dart';
 
 GetIt locator = GetIt.instance;
 

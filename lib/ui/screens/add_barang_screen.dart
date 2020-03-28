@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kamera_teman/locator.dart';
-import 'package:kamera_teman/providers/barang_provider.dart';
-import 'package:kamera_teman/services/image.dart';
+import 'package:kamera_teman/core/providers/barang_provider.dart';
+import 'package:kamera_teman/core/services/image.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/rounded_button.dart';
-import 'package:kamera_teman/utils/constant.dart';
+import 'package:kamera_teman/core/utils/constant.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 

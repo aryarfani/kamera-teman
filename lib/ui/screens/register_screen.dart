@@ -4,12 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kamera_teman/locator.dart';
-import 'package:kamera_teman/providers/member_provider.dart';
-import 'package:kamera_teman/services/image.dart';
+import 'package:kamera_teman/core/providers/member_provider.dart';
+import 'package:kamera_teman/core/services/image.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/text_field_widget.dart';
-import 'package:kamera_teman/utils/constant.dart';
-import 'package:kamera_teman/utils/validate.dart';
+import 'package:kamera_teman/core/utils/constant.dart';
+import 'package:kamera_teman/core/utils/validate.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
@@ -167,6 +167,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
             ),
             onPressed: () async {
+              FocusScope.of(context).unfocus();
               if (_formKey.currentState.validate()) {
                 var cek = await model.addMember(
                   imageFile: _image,

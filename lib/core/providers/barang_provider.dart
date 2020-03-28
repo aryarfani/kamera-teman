@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:kamera_teman/locator.dart';
-import 'package:kamera_teman/models/barang.dart';
-import 'package:kamera_teman/providers/base_provider.dart';
-import 'package:kamera_teman/services/barang_api.dart';
-import 'package:kamera_teman/utils/constant.dart';
+import 'package:kamera_teman/core/models/barang.dart';
+import 'package:kamera_teman/core/providers/base_provider.dart';
+import 'package:kamera_teman/core/services/barang_api.dart';
+import 'package:kamera_teman/core/utils/constant.dart';
 
 class BarangProvider extends BaseProvider {
   BarangApi barangApi = locator<BarangApi>();

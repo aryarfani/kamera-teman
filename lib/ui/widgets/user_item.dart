@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kamera_teman/utils/constant.dart';
+import 'package:kamera_teman/core/utils/constant.dart';
 
 class UserItem extends StatelessWidget {
   final String gambar;
