@@ -3,23 +3,22 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/models/member.dart';
-import 'package:kamera_teman/providers/base_model.dart';
+import 'package:kamera_teman/providers/base_provider.dart';
 import 'package:kamera_teman/services/member_api.dart';
 import 'package:kamera_teman/utils/constant.dart';
 
-class MemberModel extends BaseModel {
+class MemberProvider extends BaseProvider {
   MemberApi memberApi = locator<MemberApi>();
 
-  MemberModel() {
+  MemberProvider() {
     getMembers();
   }
 
   List<Member> members;
 
   void getMembers() async {
-    setState(ViewState.Busy);
     members = await memberApi.getMembers();
-    setState(ViewState.Idle);
+    notifyListeners();
   }
 
   void addMember(

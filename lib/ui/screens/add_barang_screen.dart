@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kamera_teman/locator.dart';
-import 'package:kamera_teman/providers/barang_model.dart';
+import 'package:kamera_teman/providers/barang_provider.dart';
 import 'package:kamera_teman/services/image.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/rounded_button.dart';
@@ -26,9 +26,9 @@ class _AddBarangScreenState extends State<AddBarangScreen> {
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
-    return ChangeNotifierProvider<BarangModel>(
-      create: (context) => locator<BarangModel>(),
-      child: Consumer<BarangModel>(
+    return ChangeNotifierProvider<BarangProvider>(
+      create: (context) => locator<BarangProvider>(),
+      child: Consumer<BarangProvider>(
         builder: (context, model, child) {
           return Scaffold(
             resizeToAvoidBottomInset: false,
@@ -90,7 +90,7 @@ class _AddBarangScreenState extends State<AddBarangScreen> {
     );
   }
 
-  Widget buildRoundedButton(BarangModel model) {
+  Widget buildRoundedButton(BarangProvider model) {
     print(model.state);
     return model.state == ViewState.Busy
         ? Center(child: CupertinoActivityIndicator())

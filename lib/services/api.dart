@@ -9,8 +9,8 @@ class ApiService {
   Future delete(String type, int id) async {
     print('delete is working');
 
-    var uri = Uri.parse(linkApi + '$type' + '/$id');
-    var request = http.MultipartRequest('POST', uri);
+    var url = Uri.parse(linkApi + '$type' + '/$id');
+    var request = http.MultipartRequest('POST', url);
     request.fields['_method'] = 'delete';
 
     var res = await request.send();
@@ -21,5 +21,22 @@ class ApiService {
     }
 
     return false;
+  }
+
+  Future login(String email, String password) async {
+    var url = Uri.parse(linkApi + 'login');
+    var request = http.MultipartRequest('POST', url);
+    request.fields['email'] = email;
+    request.fields['password'] = password;
+
+    var res = await request.send();
+
+    if (res.statusCode == 200) {
+      return 'success';
+    } else if (res.statusCode == 404) {
+      return 'Email atau password salah';
+    } else {
+      return 'Login gagal, cek koneksi internet';
+    }
   }
 }

@@ -3,23 +3,22 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/models/admin.dart';
-import 'package:kamera_teman/providers/base_model.dart';
+import 'package:kamera_teman/providers/base_provider.dart';
 import 'package:kamera_teman/services/admin_api.dart';
 import 'package:kamera_teman/utils/constant.dart';
 
-class AdminModel extends BaseModel {
+class AdminProvider extends BaseProvider {
   AdminApi adminApi = locator<AdminApi>();
 
-  AdminModel() {
+  AdminProvider() {
     getAdmins();
   }
 
   List<Admin> admins;
 
   void getAdmins() async {
-    setState(ViewState.Busy);
     admins = await adminApi.getAdmins();
-    setState(ViewState.Idle);
+    notifyListeners();
   }
 
   void addAdmin(

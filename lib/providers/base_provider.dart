@@ -3,7 +3,7 @@ import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/services/api.dart';
 import 'package:kamera_teman/utils/constant.dart';
 
-class BaseModel extends ChangeNotifier {
+class BaseProvider extends ChangeNotifier {
   ApiService apiService = locator<ApiService>();
 
   ViewState _state = ViewState.Idle;

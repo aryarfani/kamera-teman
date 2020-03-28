@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/models/barang.dart';
-import 'package:kamera_teman/providers/barang_model.dart';
+import 'package:kamera_teman/providers/barang_provider.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/utils/constant.dart';
 import 'package:kamera_teman/utils/router.dart';
@@ -13,9 +13,9 @@ class BarangScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
-    return ChangeNotifierProvider<BarangModel>(
-      create: (context) => locator<BarangModel>(),
-      child: Consumer<BarangModel>(
+    return ChangeNotifierProvider<BarangProvider>(
+      create: (context) => locator<BarangProvider>(),
+      child: Consumer<BarangProvider>(
         builder: (context, model, child) {
           return Scaffold(
             body: SafeArea(
@@ -25,9 +25,7 @@ class BarangScreen extends StatelessWidget {
                   Navigator.pushNamed(context, RouteName.addBarang);
                 },
                 title: 'Daftar Barang',
-                widget: model.state == ViewState.Busy
-                    ? Center(child: CupertinoActivityIndicator())
-                    : getBarangListUI(model.barangs),
+                widget: getBarangListUI(model.barangs),
               ),
             ),
           );
@@ -36,16 +34,18 @@ class BarangScreen extends StatelessWidget {
     );
   }
 
-  ListView getBarangListUI(List<Barang> barangs) {
-    return ListView.builder(
-      itemCount: barangs.length,
-      itemBuilder: (context, index) => BarangItem(
-        name: barangs[index].nama,
-        harga: barangs[index].harga.toString(),
-        image: NetworkImage(linkImage + barangs[index].gambar),
-        stock: barangs[index].stock,
-      ),
-    );
+  Widget getBarangListUI(List<Barang> barangs) {
+    return barangs == null
+        ? Center(child: CupertinoActivityIndicator())
+        : ListView.builder(
+            itemCount: barangs.length,
+            itemBuilder: (context, index) => BarangItem(
+              name: barangs[index].nama,
+              harga: barangs[index].harga.toString(),
+              image: NetworkImage(linkImage + barangs[index].gambar),
+              stock: barangs[index].stock,
+            ),
+          );
   }
 }
 

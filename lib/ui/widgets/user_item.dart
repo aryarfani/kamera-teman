@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kamera_teman/utils/constant.dart';
 
 class UserItem extends StatelessWidget {
-  final NetworkImage gambar;
+  final String gambar;
   final String nama;
   final String alamat;
 
@@ -25,7 +26,7 @@ class UserItem extends StatelessWidget {
               width: 70,
               height: 70,
               fit: BoxFit.cover,
-              image: gambar,
+              image: gambar == null ? AssetImage('images/dummy.jpg') : NetworkImage(linkImage + gambar),
             ),
           ),
           SizedBox(width: 20),
@@ -38,7 +39,7 @@ class UserItem extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                     color: Color(0xFF403269),
                   )),
-              Text(alamat,
+              Text(alamat ?? 'unknown',
                   style: GoogleFonts.montserrat(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kamera_teman/locator.dart';
-import 'package:kamera_teman/providers/member_model.dart';
+import 'package:kamera_teman/providers/member_provider.dart';
 import 'package:kamera_teman/services/image.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/rounded_button.dart';
@@ -28,9 +28,9 @@ class _AddMemberScreenState extends State<AddMemberScreen> {
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
-    return ChangeNotifierProvider<MemberModel>(
-      create: (context) => locator<MemberModel>(),
-      child: Consumer<MemberModel>(
+    return ChangeNotifierProvider<MemberProvider>(
+      create: (context) => locator<MemberProvider>(),
+      child: Consumer<MemberProvider>(
         builder: (context, model, child) {
           return Scaffold(
             resizeToAvoidBottomInset: false,
@@ -96,7 +96,7 @@ class _AddMemberScreenState extends State<AddMemberScreen> {
     );
   }
 
-  Widget buildRoundedButton(MemberModel model) {
+  Widget buildRoundedButton(MemberProvider model) {
     print(model.state);
     return model.state == ViewState.Busy
         ? Center(child: CupertinoActivityIndicator())

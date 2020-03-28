@@ -27,7 +27,7 @@ class AppHeader extends StatelessWidget {
               begin: FractionalOffset(0, 0),
               end: FractionalOffset(0, 1),
               stops: [0.0, 1.0])),
-      padding: EdgeInsets.only(left: mq.width * 0.08, right: mq.width * 0.08, top: mq.height * 0.04),
+      padding: EdgeInsets.only(left: mq.width * 0.08, right: mq.width * 0.08, top: mq.height * 0.03),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -44,14 +44,17 @@ class AppHeader extends StatelessWidget {
                 ),
               ),
               InkWell(
-                child: iconAdd ? Icon(Icons.add_circle_outline, color: Color(0xFF403269)) : SizedBox(height: 35),
+                child: Container(
+                  padding: EdgeInsets.all(4),
+                  child: iconAdd ? Icon(Icons.add_circle_outline, color: Color(0xFF403269)) : SizedBox(height: 35),
+                ),
                 onTap: callback,
               )
             ],
           ),
           SizedBox(height: 20),
           Container(
-            constraints: BoxConstraints(maxHeight: mq.height * 0.80),
+            constraints: BoxConstraints(maxHeight: mq.height * 0.85),
             child: widget,
           )
         ],

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kamera_teman/locator.dart';
-import 'package:kamera_teman/providers/admin_model.dart';
+import 'package:kamera_teman/providers/admin_provider.dart';
 import 'package:kamera_teman/services/image.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/rounded_button.dart';
@@ -28,9 +28,9 @@ class _AddAdminScreenState extends State<AddAdminScreen> {
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
-    return ChangeNotifierProvider<AdminModel>(
-      create: (context) => locator<AdminModel>(),
-      child: Consumer<AdminModel>(
+    return ChangeNotifierProvider<AdminProvider>(
+      create: (context) => locator<AdminProvider>(),
+      child: Consumer<AdminProvider>(
         builder: (context, model, child) {
           return Scaffold(
             resizeToAvoidBottomInset: false,
@@ -96,7 +96,7 @@ class _AddAdminScreenState extends State<AddAdminScreen> {
     );
   }
 
-  Widget buildRoundedButton(AdminModel model) {
+  Widget buildRoundedButton(AdminProvider model) {
     print(model.state);
     return model.state == ViewState.Busy
         ? Center(child: CupertinoActivityIndicator())

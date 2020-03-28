@@ -3,23 +3,22 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/models/barang.dart';
-import 'package:kamera_teman/providers/base_model.dart';
+import 'package:kamera_teman/providers/base_provider.dart';
 import 'package:kamera_teman/services/barang_api.dart';
 import 'package:kamera_teman/utils/constant.dart';
 
-class BarangModel extends BaseModel {
+class BarangProvider extends BaseProvider {
   BarangApi barangApi = locator<BarangApi>();
 
-  BarangModel() {
+  BarangProvider() {
     getBarangs();
   }
 
   List<Barang> barangs;
 
   void getBarangs() async {
-    setState(ViewState.Busy);
     barangs = await barangApi.getBarangs();
-    setState(ViewState.Idle);
+    notifyListeners();
   }
 
   void addBarang({

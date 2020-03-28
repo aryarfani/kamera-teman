@@ -9,7 +9,9 @@ class TextFieldWidget extends StatefulWidget {
   final TextInputType keyboardType;
   final bool isPassword;
 
-  const TextFieldWidget({this.cText, this.hintText, this.keyboardType, this.isPassword = false});
+  final Function validator;
+
+  const TextFieldWidget({this.cText, this.validator, this.hintText, this.keyboardType, this.isPassword = false});
 
   @override
   _TextFieldWidgetState createState() => _TextFieldWidgetState();
@@ -28,7 +30,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
     final mq = MediaQuery.of(context).size;
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         SizedBox(height: 20),
         Row(
@@ -36,9 +38,10 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           children: <Widget>[
             Container(
               alignment: Alignment.bottomCenter,
-              width: mq.width * 0.7,
+              width: mq.width * 0.77,
               height: 30,
-              child: TextField(
+              child: TextFormField(
+                validator: widget.validator,
                 obscureText: widget.isPassword ? !passwordVisible : false,
                 keyboardType: widget.keyboardType,
                 style: GoogleFonts.lato(
@@ -49,7 +52,8 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                 controller: widget.cText,
                 decoration: InputDecoration(
                   hintText: widget.hintText,
-                  border: InputBorder.none,
+                  // border: InputBorder.none,
+
                   hintStyle: GoogleFonts.lato(
                     color: Colors.black38,
                     fontWeight: FontWeight.w400,
@@ -72,11 +76,11 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                 : Container()
           ],
         ),
-        Divider(
-          color: Color(0xFF5F518A),
-          thickness: 0.5,
-          height: 0,
-        )
+        // Divider(
+        //   color: Color(0xFF5F518A),
+        //   thickness: 0.5,
+        //   height: 0,
+        // )
       ],
     );
   }
