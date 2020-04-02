@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/core/utils/router.dart';
+import 'package:kamera_teman/locator.dart';
 import 'package:oktoast/oktoast.dart';
 
 void main() {

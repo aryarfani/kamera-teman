@@ -26,7 +26,7 @@ class ApiService {
   }
 
   Future login(String email, String password) async {
-    var url = Uri.parse(linkApi + 'login');
+    var url = Uri.parse(linkApi + 'loginAdmin');
     var request = http.MultipartRequest('POST', url);
     request.fields['email'] = email;
     request.fields['password'] = password;
@@ -34,7 +34,7 @@ class ApiService {
     var res = await request.send();
     print(res.statusCode);
     if (res.statusCode == 200) {
-      return 'success';
+      return '';
     } else if (res.statusCode == 401) {
       return 'Email atau password salah';
     } else {
