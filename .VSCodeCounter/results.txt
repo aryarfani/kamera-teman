@@ -1,0 +1,68 @@
+Date : 2020-04-03 21:44:52
+Directory : d:\projects\Flutter\kamera_teman\lib
+Total : 36 files,  2605 codes, 19 comments, 232 blanks, all 2856 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Dart     |         36 |      2,605 |         19 |        232 |      2,856 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                      | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                         |         36 |      2,605 |         19 |        232 |      2,856 |
+| core                                                                      |         19 |        637 |         16 |        132 |        785 |
+| core\models                                                               |          4 |         83 |          0 |         12 |         95 |
+| core\providers                                                            |          6 |        195 |          0 |         49 |        244 |
+| core\services                                                             |          6 |        253 |          8 |         58 |        319 |
+| core\utils                                                                |          3 |        106 |          8 |         13 |        127 |
+| ui                                                                        |         15 |      1,902 |          3 |         92 |      1,997 |
+| ui\screens                                                                |         10 |      1,533 |          2 |         68 |      1,603 |
+| ui\widgets                                                                |          5 |        369 |          1 |         24 |        394 |
++---------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                  | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| d:\projects\Flutter\kamera_teman\lib\core\models\admin.dart               | Dart     |         21 |          0 |          3 |         24 |
+| d:\projects\Flutter\kamera_teman\lib\core\models\barang.dart              | Dart     |         17 |          0 |          3 |         20 |
+| d:\projects\Flutter\kamera_teman\lib\core\models\barang_borrowed.dart     | Dart     |         24 |          0 |          3 |         27 |
+| d:\projects\Flutter\kamera_teman\lib\core\models\member.dart              | Dart     |         21 |          0 |          3 |         24 |
+| d:\projects\Flutter\kamera_teman\lib\core\providers\admin_provider.dart   | Dart     |         44 |          0 |         11 |         55 |
+| d:\projects\Flutter\kamera_teman\lib\core\providers\auth_provider.dart    | Dart     |         16 |          0 |          5 |         21 |
+| d:\projects\Flutter\kamera_teman\lib\core\providers\barang_provider.dart  | Dart     |         43 |          0 |         11 |         54 |
+| d:\projects\Flutter\kamera_teman\lib\core\providers\base_provider.dart    | Dart     |         13 |          0 |          5 |         18 |
+| d:\projects\Flutter\kamera_teman\lib\core\providers\member_provider.dart  | Dart     |         44 |          0 |          9 |         53 |
+| d:\projects\Flutter\kamera_teman\lib\core\providers\riwayat_provider.dart | Dart     |         35 |          0 |          8 |         43 |
+| d:\projects\Flutter\kamera_teman\lib\core\services\admin_api.dart         | Dart     |         38 |          2 |          9 |         49 |
+| d:\projects\Flutter\kamera_teman\lib\core\services\api.dart               | Dart     |         59 |          0 |         14 |         73 |
+| d:\projects\Flutter\kamera_teman\lib\core\services\barang_api.dart        | Dart     |         36 |          2 |          9 |         47 |
+| d:\projects\Flutter\kamera_teman\lib\core\services\image.dart             | Dart     |         20 |          2 |          8 |         30 |
+| d:\projects\Flutter\kamera_teman\lib\core\services\member_api.dart        | Dart     |         38 |          2 |          9 |         49 |
+| d:\projects\Flutter\kamera_teman\lib\core\services\riwayat_api.dart       | Dart     |         62 |          0 |          9 |         71 |
+| d:\projects\Flutter\kamera_teman\lib\core\utils\constant.dart             | Dart     |         10 |          0 |          4 |         14 |
+| d:\projects\Flutter\kamera_teman\lib\core\utils\router.dart               | Dart     |         59 |          0 |          3 |         62 |
+| d:\projects\Flutter\kamera_teman\lib\core\utils\validate.dart             | Dart     |         37 |          8 |          6 |         51 |
+| d:\projects\Flutter\kamera_teman\lib\locator.dart                         | Dart     |         26 |          0 |          4 |         30 |
+| d:\projects\Flutter\kamera_teman\lib\main.dart                            | Dart     |         40 |          0 |          4 |         44 |
+| d:\projects\Flutter\kamera_teman\lib\ui\screens\add_admin_screen.dart     | Dart     |        146 |          0 |          8 |        154 |
+| d:\projects\Flutter\kamera_teman\lib\ui\screens\add_barang_screen.dart    | Dart     |        138 |          0 |          8 |        146 |
+| d:\projects\Flutter\kamera_teman\lib\ui\screens\add_member_screen.dart    | Dart     |        146 |          0 |          9 |        155 |
+| d:\projects\Flutter\kamera_teman\lib\ui\screens\admin_screen.dart         | Dart     |         65 |          0 |          3 |         68 |
+| d:\projects\Flutter\kamera_teman\lib\ui\screens\barang_screen.dart        | Dart     |        191 |          1 |         11 |        203 |
+| d:\projects\Flutter\kamera_teman\lib\ui\screens\home_screen.dart          | Dart     |        357 |          1 |         10 |        368 |
+| d:\projects\Flutter\kamera_teman\lib\ui\screens\laporan_screens.dart      | Dart     |        101 |          0 |          2 |        103 |
+| d:\projects\Flutter\kamera_teman\lib\ui\screens\login_screen.dart         | Dart     |        114 |          0 |          3 |        117 |
+| d:\projects\Flutter\kamera_teman\lib\ui\screens\member_screen.dart        | Dart     |         63 |          0 |          3 |         66 |
+| d:\projects\Flutter\kamera_teman\lib\ui\screens\register_screen.dart      | Dart     |        212 |          0 |         11 |        223 |
+| d:\projects\Flutter\kamera_teman\lib\ui\widgets\app_header.dart           | Dart     |         62 |          0 |          4 |         66 |
+| d:\projects\Flutter\kamera_teman\lib\ui\widgets\barang_item.dart          | Dart     |        158 |          0 |          5 |        163 |
+| d:\projects\Flutter\kamera_teman\lib\ui\widgets\rounded_button.dart       | Dart     |         23 |          0 |          4 |         27 |
+| d:\projects\Flutter\kamera_teman\lib\ui\widgets\text_field_widget.dart    | Dart     |         76 |          0 |          7 |         83 |
+| d:\projects\Flutter\kamera_teman\lib\ui\widgets\user_item.dart            | Dart     |         50 |          1 |          4 |         55 |
+| Total                                                                     |          |      2,605 |         19 |        232 |      2,856 |
++---------------------------------------------------------------------------+----------+------------+------------+------------+------------+

@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:kamera_teman/core/models/barang.dart';
+import 'package:kamera_teman/core/models/barang_borrowed.dart';
 import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/core/services/image.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
@@ -40,5 +44,29 @@ class ApiService {
     } else {
       return 'Login gagal, cek koneksi internet';
     }
+  }
+
+  static Future<List<Barang>> jsonToBarangList(http.Response res) async {
+    var jsonObject = await json.decode(res.body);
+    if (jsonObject == []) {
+      return null;
+    }
+    List<dynamic> dataJson = jsonObject;
+    List<Barang> barangs = [];
+
+    for (var data in dataJson) barangs.add(Barang.fromJson(data));
+    return barangs;
+  }
+
+  static Future<List<BarangBorrowed>> jsonToBarangBorrowedList(http.Response res) async {
+    var jsonObject = await json.decode(res.body);
+    if (jsonObject == []) {
+      return null;
+    }
+    List<dynamic> dataJson = jsonObject;
+    List<BarangBorrowed> barangs = [];
+
+    for (var data in dataJson) barangs.add(BarangBorrowed.fromJson(data));
+    return barangs;
   }
 }

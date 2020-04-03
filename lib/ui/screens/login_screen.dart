@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
               child: AppHeader(
                 topPadding: mq.height * 0.1,
                 mq: mq,
-                title: 'Welcome to\n      Kamera Teman',
+                title: 'Welcome to\n      Kamera Teman Admin',
                 iconAdd: false,
                 widget: SingleChildScrollView(
                   reverse: true,

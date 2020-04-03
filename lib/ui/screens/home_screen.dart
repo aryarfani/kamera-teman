@@ -106,6 +106,23 @@ class HomeScreen extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
+                        SizedBox(height: 12),
+                        Text(
+                          'Terbaru :',
+                          style: GoogleFonts.montserrat(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white70,
+                          ),
+                        ),
+                        Text(
+                          'Sora aoi',
+                          style: GoogleFonts.montserrat(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                          ),
+                        ),
                       ],
                     ),
                     Spacer(),
@@ -128,7 +145,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 12),
                         Text(
-                          'Latest :',
+                          'Terbaru :',
                           style: GoogleFonts.montserrat(
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
