@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 enum ViewState { Idle, Busy }
 enum EndIcon { Cart, Clear, Nothing, Confirming, Borrowing, Done, Cancelled }
 
-String url = 'http://5a5520de.ngrok.io';
+String url = 'http://636f51d5.ngrok.io';
 String linkImage = '$url/lumen/kamera-teman/public/images/';
 String linkApi = '$url/lumen/kamera-teman/public/api/';
 

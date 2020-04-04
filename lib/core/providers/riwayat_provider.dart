@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:kamera_teman/core/models/barang_borrowed.dart';
 import 'package:kamera_teman/core/providers/base_provider.dart';
 import 'package:kamera_teman/core/services/riwayat_api.dart';
+import 'package:kamera_teman/core/utils/constant.dart';
 import 'package:kamera_teman/locator.dart';
 
 class RiwayatProvider extends BaseProvider {
@@ -13,12 +14,20 @@ class RiwayatProvider extends BaseProvider {
 
   Future getAllRiwayat() async {
     allRiwayat = await riwayatApi.getAllRiwayat();
-    notifyListeners();
+
+    setState(ViewState.Idle);
   }
 
   Future getUnconfirmedRiwayat() async {
     unconfirmedRiwayat = await riwayatApi.getUnconfirmedRiwayat();
-    notifyListeners();
+
+    setState(ViewState.Idle);
+  }
+
+  Future getBorrowedRiwayat() async {
+    borrowedRiwayat = await riwayatApi.getBorrowedRiwayat();
+
+    setState(ViewState.Idle);
   }
 
   Future<bool> confirmBarang({@required int id}) async {
@@ -33,10 +42,5 @@ class RiwayatProvider extends BaseProvider {
     getUnconfirmedRiwayat();
     getAllRiwayat();
     return res;
-  }
-
-  Future getBorrowedRiwayat() async {
-    borrowedRiwayat = await riwayatApi.getBorrowedRiwayat();
-    notifyListeners();
   }
 }

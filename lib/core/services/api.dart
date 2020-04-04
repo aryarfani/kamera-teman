@@ -31,19 +31,11 @@ class ApiService {
 
   Future login(String email, String password) async {
     var url = Uri.parse(linkApi + 'loginAdmin');
-    var request = http.MultipartRequest('POST', url);
-    request.fields['email'] = email;
-    request.fields['password'] = password;
-
-    var res = await request.send();
-    print(res.statusCode);
-    if (res.statusCode == 200) {
-      return '';
-    } else if (res.statusCode == 401) {
-      return 'Email atau password salah';
-    } else {
-      return 'Login gagal, cek koneksi internet';
-    }
+    var res = await http.post(url, body: {
+      'email': email,
+      'password': password,
+    });
+    return res;
   }
 
   static Future<List<Barang>> jsonToBarangList(http.Response res) async {

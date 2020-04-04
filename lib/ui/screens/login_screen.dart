@@ -70,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                           onPressed: () async {
                             FocusScope.of(context).unfocus();
                             var res = await model.login(email: cEmail.text, password: cPassword.text);
-                            if (res == '') {
+                            if (res == 200) {
                               showToast('Login berhasil');
                               Navigator.pushReplacementNamed(context, RouteName.home);
                             }

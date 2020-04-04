@@ -6,7 +6,7 @@ import 'package:kamera_teman/core/utils/constant.dart';
 class BaseProvider extends ChangeNotifier {
   ApiService apiService = locator<ApiService>();
 
-  ViewState _state = ViewState.Idle;
+  ViewState _state = ViewState.Busy;
 
   ViewState get state => _state;
 

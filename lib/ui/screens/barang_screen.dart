@@ -101,31 +101,33 @@ class UncofirmedBarang extends StatelessWidget {
   final RiwayatProvider model;
   @override
   Widget build(BuildContext context) {
-    return model.unconfirmedRiwayat == null
-        ? NoBarangBg()
-        : ListView.builder(
-            itemCount: model.unconfirmedRiwayat.length,
-            itemBuilder: (context, index) {
-              BarangBorrowed barang = model.unconfirmedRiwayat[index];
-              return BarangItem(
-                nama: barang.nama,
-                namaMember: barang.namaMember,
-                image: NetworkImage(linkImage + barang.gambar),
-                stock: barang.stock,
-                endIcon: EndIcon.Confirming,
-                confirmCallback: () async {
-                  if (await model.confirmBarang(id: barang.riwayatId)) {
-                    showToast('Barang dikonfirmasi');
-                  }
-                },
-                cancelCallback: () async {
-                  if (await model.cancelBarang(id: barang.riwayatId)) {
-                    showToast('Barang dicancel');
-                  }
+    return model.state == ViewState.Busy
+        ? Center(child: CircularProgressIndicator())
+        : model.unconfirmedRiwayat == null
+            ? NoBarangBg()
+            : ListView.builder(
+                itemCount: model.unconfirmedRiwayat.length,
+                itemBuilder: (context, index) {
+                  BarangBorrowed barang = model.unconfirmedRiwayat[index];
+                  return BarangItem(
+                    nama: barang.nama,
+                    namaMember: barang.namaMember,
+                    image: NetworkImage(linkImage + barang.gambar),
+                    stock: barang.stock,
+                    endIcon: EndIcon.Confirming,
+                    confirmCallback: () async {
+                      if (await model.confirmBarang(id: barang.riwayatId)) {
+                        showToast('Barang dikonfirmasi');
+                      }
+                    },
+                    cancelCallback: () async {
+                      if (await model.cancelBarang(id: barang.riwayatId)) {
+                        showToast('Barang dicancel');
+                      }
+                    },
+                  );
                 },
               );
-            },
-          );
   }
 }
 
@@ -134,22 +136,24 @@ class BorrowedBarang extends StatelessWidget {
   final RiwayatProvider model;
   @override
   Widget build(BuildContext context) {
-    return model.borrowedRiwayat == null
-        ? NoBarangBg()
-        : ListView.builder(
-            itemCount: model.borrowedRiwayat.length,
-            itemBuilder: (context, index) {
-              BarangBorrowed barang = model.borrowedRiwayat[index];
-              return BarangItem(
-                nama: barang.nama,
-                namaMember: barang.namaMember,
-                tanggalTempo: barang.tanggalTempo,
-                image: NetworkImage(linkImage + barang.gambar),
-                stock: barang.stock,
-                endIcon: EndIcon.Borrowing,
+    return model.state == ViewState.Busy
+        ? Center(child: CircularProgressIndicator())
+        : model.borrowedRiwayat == null
+            ? NoBarangBg()
+            : ListView.builder(
+                itemCount: model.borrowedRiwayat.length,
+                itemBuilder: (context, index) {
+                  BarangBorrowed barang = model.borrowedRiwayat[index];
+                  return BarangItem(
+                    nama: barang.nama,
+                    namaMember: barang.namaMember,
+                    tanggalTempo: barang.tanggalTempo,
+                    image: NetworkImage(linkImage + barang.gambar),
+                    stock: barang.stock,
+                    endIcon: EndIcon.Borrowing,
+                  );
+                },
               );
-            },
-          );
   }
 }
 
@@ -158,34 +162,36 @@ class AllBarangRiwayat extends StatelessWidget {
   final RiwayatProvider model;
   @override
   Widget build(BuildContext context) {
-    return model.allRiwayat == null
-        ? NoBarangBg()
-        : ListView.builder(
-            itemCount: model.allRiwayat.length,
-            itemBuilder: (context, index) {
-              BarangBorrowed barang = model.allRiwayat[index];
-              EndIcon buildEnd() {
-                if (barang.status == 2) {
-                  return EndIcon.Done;
-                } else if (barang.status == 3) {
-                  return EndIcon.Cancelled;
-                } else if (barang.status == 1) {
-                  return EndIcon.Borrowing;
-                } else if (barang.status == 0) {
-                  return EndIcon.Confirming;
-                }
-                return null;
-              }
+    return model.state == ViewState.Busy
+        ? Center(child: CircularProgressIndicator())
+        : model.allRiwayat == null
+            ? NoBarangBg()
+            : ListView.builder(
+                itemCount: model.allRiwayat.length,
+                itemBuilder: (context, index) {
+                  BarangBorrowed barang = model.allRiwayat[index];
+                  EndIcon buildEnd() {
+                    if (barang.status == 2) {
+                      return EndIcon.Done;
+                    } else if (barang.status == 3) {
+                      return EndIcon.Cancelled;
+                    } else if (barang.status == 1) {
+                      return EndIcon.Borrowing;
+                    } else if (barang.status == 0) {
+                      return EndIcon.Confirming;
+                    }
+                    return null;
+                  }
 
-              return BarangItem(
-                nama: barang.nama,
-                namaMember: barang.namaMember,
-                image: NetworkImage(linkImage + barang.gambar),
-                stock: barang.stock,
-                endIcon: buildEnd(),
+                  return BarangItem(
+                    nama: barang.nama,
+                    namaMember: barang.namaMember,
+                    image: NetworkImage(linkImage + barang.gambar),
+                    stock: barang.stock,
+                    endIcon: buildEnd(),
+                  );
+                },
               );
-            },
-          );
   }
 }
 

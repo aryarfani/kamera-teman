@@ -7,9 +7,11 @@ import 'package:kamera_teman/ui/screens/admin_screen.dart';
 import 'package:kamera_teman/ui/screens/barang_screen.dart';
 import 'package:kamera_teman/ui/screens/home_screen.dart';
 import 'package:kamera_teman/ui/screens/laporan_screens.dart';
+
 import 'package:kamera_teman/ui/screens/login_screen.dart';
 import 'package:kamera_teman/ui/screens/member_screen.dart';
 import 'package:kamera_teman/ui/screens/register_screen.dart';
+import 'package:kamera_teman/ui/screens/splash_screen.dart';
 
 class RouteName {
   static const String splash = 'splash';
@@ -32,6 +34,8 @@ class Router {
         return MaterialPageRoute(builder: (_) => HomeScreen());
       case RouteName.login:
         return MaterialPageRoute(builder: (_) => LoginScreen());
+      case RouteName.splash:
+        return MaterialPageRoute(builder: (_) => SplashScreen());
       case RouteName.register:
         return CupertinoPageRoute(builder: (_) => RegisterScreen());
       case RouteName.laporan:

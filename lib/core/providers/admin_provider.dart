@@ -2,12 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:kamera_teman/core/models/admin.dart';
-import 'package:kamera_teman/core/providers/base_provider.dart';
 import 'package:kamera_teman/core/services/admin_api.dart';
+import 'package:kamera_teman/core/services/api.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
 import 'package:kamera_teman/locator.dart';
 
-class AdminProvider extends BaseProvider {
+class AdminProvider extends ChangeNotifier {
+  ApiService apiService = ApiService();
   AdminApi adminApi = locator<AdminApi>();
 
   AdminProvider() {
@@ -15,6 +16,12 @@ class AdminProvider extends BaseProvider {
   }
 
   List<Admin> admins;
+  ViewState _state = ViewState.Idle;
+  ViewState get state => _state;
+  void setState(ViewState viewState) {
+    _state = viewState;
+    notifyListeners();
+  }
 
   void getAdmins() async {
     admins = await adminApi.getAdmins();
