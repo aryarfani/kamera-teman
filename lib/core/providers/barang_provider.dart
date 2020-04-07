@@ -12,6 +12,7 @@ class BarangProvider extends BaseProvider {
 
   BarangProvider() {
     getBarangs();
+    setState(viewState: ViewState.Idle);
   }
 
   List<Barang> barangs;
@@ -28,9 +29,9 @@ class BarangProvider extends BaseProvider {
     @required String harga,
   }) async {
     try {
-      setState(ViewState.Busy);
+      setState(viewState: ViewState.Busy);
       var isUploadSuccess = await barangApi.uploadBarang(imageFile, nama, stock, harga);
-      setState(ViewState.Idle);
+      setState(viewState: ViewState.Idle);
 
       return isUploadSuccess;
     } catch (e) {

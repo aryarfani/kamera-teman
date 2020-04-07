@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kamera_teman/core/utils/constant.dart';
 import 'package:kamera_teman/core/utils/router.dart';
 
 // insertchart
@@ -71,12 +72,12 @@ class HomeScreen extends StatelessWidget {
                 ItemDashboardPutih(
                   mq: mq,
                   icon: Icons.storage,
-                  title: 'Barang',
+                  title: 'Transaksi',
                   tapCallback: () {
                     Navigator.pushNamed(context, RouteName.barangList);
                   },
                   children: <Widget>[
-                    ItemRow(title: 'Total Barang', subtitle: '28 Barang'),
+                    ItemRow(title: 'Total Transaksi', subtitle: '28 Transaksi'),
                     SizedBox(height: 10),
                     Row(
                       children: <Widget>[
@@ -91,7 +92,7 @@ class HomeScreen extends StatelessWidget {
                   children: <Widget>[
                     ItemDashboardBasic(
                       mq: mq,
-                      color: Color(0xFFF8801D),
+                      color: Colors.white,
                       title: 'Total Member',
                       tapCallback: () {
                         Navigator.pushNamed(context, RouteName.memberList);
@@ -103,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                           style: GoogleFonts.montserrat(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            color: Colors.white,
+                            color: Color(0xFF2A436C),
                           ),
                         ),
                         SizedBox(height: 12),
@@ -112,7 +113,7 @@ class HomeScreen extends StatelessWidget {
                           style: GoogleFonts.montserrat(
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
-                            color: Colors.white70,
+                            color: Colors.black45,
                           ),
                         ),
                         Text(
@@ -120,7 +121,7 @@ class HomeScreen extends StatelessWidget {
                           style: GoogleFonts.montserrat(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
-                            color: Colors.white,
+                            color: Color(0xFF2A436C),
                           ),
                         ),
                       ],
@@ -128,7 +129,7 @@ class HomeScreen extends StatelessWidget {
                     Spacer(),
                     ItemDashboardBasic(
                       mq: mq,
-                      color: Color(0xFF0FB8C6),
+                      color: Colors.white,
                       title: 'Total Admin',
                       tapCallback: () {
                         Navigator.pushNamed(context, RouteName.adminList);
@@ -140,7 +141,7 @@ class HomeScreen extends StatelessWidget {
                           style: GoogleFonts.montserrat(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            color: Colors.white,
+                            color: Color(0xFF2A436C),
                           ),
                         ),
                         SizedBox(height: 12),
@@ -149,7 +150,7 @@ class HomeScreen extends StatelessWidget {
                           style: GoogleFonts.montserrat(
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
-                            color: Colors.white70,
+                            color: Colors.black45,
                           ),
                         ),
                         Text(
@@ -157,7 +158,7 @@ class HomeScreen extends StatelessWidget {
                           style: GoogleFonts.montserrat(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
-                            color: Colors.white,
+                            color: Color(0xFF2A436C),
                           ),
                         ),
                       ],
@@ -215,14 +216,7 @@ class ItemDashboardPutih extends StatelessWidget {
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.8),
-              spreadRadius: 0.5,
-              blurRadius: 2,
-              offset: Offset(0, 1),
-            ),
-          ],
+          boxShadow: Styles.boxShadow,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
@@ -320,14 +314,7 @@ class ItemDashboardBasic extends StatelessWidget {
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: color,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.8),
-              spreadRadius: 0.5,
-              blurRadius: 5,
-              offset: Offset(0, 1),
-            ),
-          ],
+          boxShadow: Styles.boxShadow,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
@@ -342,7 +329,7 @@ class ItemDashboardBasic extends StatelessWidget {
               ),
               child: Icon(
                 Icons.people,
-                color: Colors.white70,
+                color: Color(0xFF2A436C),
                 size: 30,
               ),
             ),
@@ -351,8 +338,8 @@ class ItemDashboardBasic extends StatelessWidget {
               title,
               style: GoogleFonts.montserrat(
                 fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: Colors.white70,
+                fontWeight: FontWeight.w500,
+                color: Colors.black45,
               ),
             ),
             Column(

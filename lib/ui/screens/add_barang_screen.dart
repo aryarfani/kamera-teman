@@ -25,6 +25,11 @@ class _AddBarangScreenState extends State<AddBarangScreen> {
   TextEditingController cHarga = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
     return ChangeNotifierProvider<BarangProvider>(
@@ -70,12 +75,12 @@ class _AddBarangScreenState extends State<AddBarangScreen> {
                         TextField(
                           controller: cStock,
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(hintText: "Email"),
+                          decoration: InputDecoration(hintText: "Stock"),
                         ),
                         TextField(
                           controller: cHarga,
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(hintText: "Phone"),
+                          decoration: InputDecoration(hintText: "Harga"),
                         ),
                         SizedBox(height: 10),
                         buildRoundedButton(model)
@@ -92,7 +97,6 @@ class _AddBarangScreenState extends State<AddBarangScreen> {
   }
 
   Widget buildRoundedButton(BarangProvider model) {
-    print(model.state);
     return model.state == ViewState.Busy
         ? Center(child: CupertinoActivityIndicator())
         : RoundedButton(
@@ -107,6 +111,10 @@ class _AddBarangScreenState extends State<AddBarangScreen> {
                 harga: cHarga.text,
               );
               cek ? showToast('Berhasil menambahkan barang') : showToast('Gagal menambahkan barang');
+              cNama.text = '';
+              cStock.text = '';
+              cHarga.text = '';
+              _image = null;
             },
           );
   }

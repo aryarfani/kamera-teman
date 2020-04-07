@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "831385287752",
+    "firebase_url": "https://kamera-teman.firebaseio.com",
+    "project_id": "kamera-teman",
+    "storage_bucket": "kamera-teman.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831385287752:android:40bcabf3da9d6b5dce2c7d",
+        "android_client_info": {
+          "package_name": "com.example.kamera_teman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "831385287752-glob5shr1runfn4654056o3s52hpe73p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaAqX-i7hauDRxJJIk4Ikp9xpCOAEbHmQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "831385287752-glob5shr1runfn4654056o3s52hpe73p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

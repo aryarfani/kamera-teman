@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kamera_teman/core/services/push_notification_service.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
 import 'package:kamera_teman/core/utils/router.dart';
+import 'package:kamera_teman/locator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -13,9 +15,12 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final PushNotificationService _pushNotificationService = locator<PushNotificationService>();
+
   @override
   void initState() {
     startTimer();
+    _pushNotificationService.init();
     super.initState();
   }
 
@@ -55,8 +60,8 @@ class _SplashScreenState extends State<SplashScreen> {
     SharedPreferences storage = await SharedPreferences.getInstance();
     var idCurrent = storage.get('idAdmin');
     print(idCurrent.toString());
-    if (idCurrent != null) {
-      Navigator.pushReplacementNamed(context, RouteName.home);
+    if (idCurrent == null) {
+      Navigator.pushReplacementNamed(context, RouteName.login);
     } else {
       Navigator.pushReplacementNamed(context, RouteName.home);
     }

@@ -29,9 +29,9 @@ class MemberProvider extends BaseProvider {
       @required String phone,
       @required String password}) async {
     try {
-      setState(ViewState.Busy);
+      setState(viewState: ViewState.Busy);
       var isUploadSuccess = await memberApi.uploadMember(imageFile, nama, alamat, email, phone, password);
-      setState(ViewState.Idle);
+      setState(viewState: ViewState.Idle);
 
       return isUploadSuccess;
     } catch (e) {

@@ -15,19 +15,19 @@ class RiwayatProvider extends BaseProvider {
   Future getAllRiwayat() async {
     allRiwayat = await riwayatApi.getAllRiwayat();
 
-    setState(ViewState.Idle);
+    setState(viewState: ViewState.Idle);
   }
 
   Future getUnconfirmedRiwayat() async {
     unconfirmedRiwayat = await riwayatApi.getUnconfirmedRiwayat();
 
-    setState(ViewState.Idle);
+    setState(viewState: ViewState.Idle);
   }
 
   Future getBorrowedRiwayat() async {
     borrowedRiwayat = await riwayatApi.getBorrowedRiwayat();
 
-    setState(ViewState.Idle);
+    setState(viewState: ViewState.Idle);
   }
 
   Future<bool> confirmBarang({@required int id}) async {

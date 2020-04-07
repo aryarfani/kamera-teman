@@ -9,6 +9,7 @@ class BarangItem extends StatelessWidget {
   final String namaMember;
   final String tanggalTempo;
   final int stock;
+  final int totalBiaya;
   final EndIcon endIcon;
   final Function addCartCallback;
   final Function clearCallback;
@@ -25,7 +26,8 @@ class BarangItem extends StatelessWidget {
       this.clearCallback,
       this.confirmCallback,
       this.cancelCallback,
-      this.tanggalTempo});
+      this.tanggalTempo,
+      this.totalBiaya});
 
   Widget buildIconWidget() {
     switch (endIcon) {
@@ -142,6 +144,13 @@ class BarangItem extends StatelessWidget {
                 ),
                 SizedBox(height: 5),
                 Text('Oleh $namaMember',
+                    style: GoogleFonts.montserrat(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFF776A9E),
+                    )),
+                SizedBox(height: 5),
+                Text('Rp $totalBiaya,-',
                     style: GoogleFonts.montserrat(
                       fontSize: 13,
                       fontWeight: FontWeight.w400,

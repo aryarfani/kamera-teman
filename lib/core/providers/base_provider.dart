@@ -10,8 +10,9 @@ class BaseProvider extends ChangeNotifier {
 
   ViewState get state => _state;
 
-  void setState(ViewState viewState) {
+  void setState({ViewState viewState, bool notify = true}) {
+    print('viewstate triggered');
     _state = viewState;
-    notifyListeners();
+    if (notify) notifyListeners();
   }
 }

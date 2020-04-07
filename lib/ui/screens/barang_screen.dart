@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kamera_teman/core/models/barang_borrowed.dart';
 import 'package:kamera_teman/core/providers/riwayat_provider.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
+import 'package:kamera_teman/core/utils/router.dart';
 import 'package:kamera_teman/ui/widgets/barang_item.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
@@ -39,11 +40,30 @@ class _BarangScreenState extends State<BarangScreen> with SingleTickerProviderSt
     return Consumer<RiwayatProvider>(
       builder: (context, model, child) {
         return Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size(0, 0),
-            child: Visibility(
-              visible: false,
-              child: AppBar(),
+          appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Styles.darkPurple,
+            actions: <Widget>[
+              InkWell(
+                child: Container(
+                  padding: EdgeInsets.only(right: 10),
+                  child: Icon(
+                    Icons.add_circle_outline,
+                    color: Styles.coolWhite,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacementNamed(RouteName.addBarang);
+                },
+              )
+            ],
+            title: Text(
+              'Riwayat',
+              style: GoogleFonts.montserrat(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+                color: Styles.coolWhite,
+              ),
             ),
           ),
           body: SingleChildScrollView(
@@ -51,21 +71,11 @@ class _BarangScreenState extends State<BarangScreen> with SingleTickerProviderSt
               children: <Widget>[
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.only(top: height * 0.06, left: width * 0.04, right: width * 0.04),
+                  padding: EdgeInsets.only(left: width * 0.04, right: width * 0.04),
                   decoration: BoxDecoration(color: Styles.darkPurple),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
-                        'Riwayat',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                          // color: Color(0xFF403269),
-                          color: Styles.coolWhite,
-                        ),
-                      ),
-                      SizedBox(height: 10),
                       TabBar(
                         indicatorSize: TabBarIndicatorSize.label,
                         indicatorColor: Colors.white,
@@ -112,6 +122,7 @@ class UncofirmedBarang extends StatelessWidget {
                   return BarangItem(
                     nama: barang.nama,
                     namaMember: barang.namaMember,
+                    totalBiaya: barang.total_biaya,
                     image: NetworkImage(linkImage + barang.gambar),
                     stock: barang.stock,
                     endIcon: EndIcon.Confirming,
@@ -147,6 +158,7 @@ class BorrowedBarang extends StatelessWidget {
                   return BarangItem(
                     nama: barang.nama,
                     namaMember: barang.namaMember,
+                    totalBiaya: barang.total_biaya,
                     tanggalTempo: barang.tanggalTempo,
                     image: NetworkImage(linkImage + barang.gambar),
                     stock: barang.stock,
@@ -186,6 +198,7 @@ class AllBarangRiwayat extends StatelessWidget {
                   return BarangItem(
                     nama: barang.nama,
                     namaMember: barang.namaMember,
+                    totalBiaya: barang.total_biaya,
                     image: NetworkImage(linkImage + barang.gambar),
                     stock: barang.stock,
                     endIcon: buildEnd(),
