@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 enum ViewState { Idle, Busy }
 enum EndIcon { Cart, Clear, Nothing, Confirming, Borrowing, Done, Cancelled }
 
-String url = 'http://d1c557cc.ngrok.io';
-String linkImage = '$url/lumen/kamera-teman/public/images/';
-String linkApi = '$url/lumen/kamera-teman/public/api/';
+String url = 'https://kamerateman.000webhostapp.com';
+String linkImage = '$url/images/';
+String linkApi = '$url/api/';
 
 class Styles {
   static Color darkPurple = Color(0xFF665CA9);

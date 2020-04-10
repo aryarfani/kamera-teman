@@ -39,7 +39,12 @@ class ApiService {
   }
 
   static Future<List<Barang>> jsonToBarangList(http.Response res) async {
-    var jsonObject = await json.decode(res.body);
+    var jsonObject;
+    try {
+      jsonObject = await json.decode(res.body);
+    } on Exception catch (e) {
+      print(e);
+    }
     if (jsonObject == []) {
       return null;
     }
@@ -51,7 +56,12 @@ class ApiService {
   }
 
   static Future<List<BarangBorrowed>> jsonToBarangBorrowedList(http.Response res) async {
-    var jsonObject = await json.decode(res.body);
+    var jsonObject;
+    try {
+      jsonObject = await json.decode(res.body);
+    } on Exception catch (e) {
+      print(e);
+    }
     if (jsonObject == []) {
       return null;
     }

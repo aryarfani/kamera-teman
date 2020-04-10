@@ -18,10 +18,14 @@ class RiwayatApi {
     }
   }
 
-  Future getAllRiwayat() async {
+  Future<List<BarangBorrowed>> getAllRiwayat() async {
     var res = await http.get(linkApi + 'getAllRiwayat/');
     print('getAllRiwayat done');
-    return ApiService.jsonToBarangBorrowedList(res);
+    List<BarangBorrowed> data;
+    if (res.statusCode == 200 && res.body != '[]') {
+      data = await ApiService.jsonToBarangBorrowedList(res);
+    }
+    return data;
   }
 
   Future<List<BarangBorrowed>> getBorrowedRiwayat() async {
