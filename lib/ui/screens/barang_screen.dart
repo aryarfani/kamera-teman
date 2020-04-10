@@ -122,7 +122,7 @@ class UncofirmedBarang extends StatelessWidget {
                   return BarangItem(
                     nama: barang.nama,
                     namaMember: barang.namaMember,
-                    totalBiaya: barang.total_biaya,
+                    totalBiaya: barang.totalBiaya,
                     image: NetworkImage(linkImage + barang.gambar),
                     stock: barang.stock,
                     endIcon: EndIcon.Confirming,
@@ -158,7 +158,7 @@ class BorrowedBarang extends StatelessWidget {
                   return BarangItem(
                     nama: barang.nama,
                     namaMember: barang.namaMember,
-                    totalBiaya: barang.total_biaya,
+                    totalBiaya: barang.totalBiaya,
                     tanggalTempo: barang.tanggalTempo,
                     image: NetworkImage(linkImage + barang.gambar),
                     stock: barang.stock,
@@ -198,7 +198,7 @@ class AllBarangRiwayat extends StatelessWidget {
                   return BarangItem(
                     nama: barang.nama,
                     namaMember: barang.namaMember,
-                    totalBiaya: barang.total_biaya,
+                    totalBiaya: barang.totalBiaya,
                     image: NetworkImage(linkImage + barang.gambar),
                     stock: barang.stock,
                     endIcon: buildEnd(),

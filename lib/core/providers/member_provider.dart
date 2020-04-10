@@ -8,19 +8,20 @@ import 'package:kamera_teman/core/services/member_api.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
 
 class MemberProvider extends BaseProvider {
-  MemberApi memberApi = locator<MemberApi>();
-
   MemberProvider() {
     getMembers();
   }
 
+  MemberApi memberApi = locator<MemberApi>();
   List<Member> members;
 
+  //Function to get all member data
   void getMembers() async {
     members = await memberApi.getMembers();
     notifyListeners();
   }
 
+  //Function to add new member
   Future addMember(
       {@required File imageFile,
       @required String nama,
@@ -39,6 +40,7 @@ class MemberProvider extends BaseProvider {
     }
   }
 
+  //Function to delete an existing member
   void deleteMember({@required Member member}) async {
     int id = member.id;
     members.remove(member);

@@ -8,26 +8,30 @@ import 'package:kamera_teman/core/utils/constant.dart';
 import 'package:kamera_teman/locator.dart';
 
 class AdminProvider extends ChangeNotifier {
-  ApiService apiService = ApiService();
-  AdminApi adminApi = locator<AdminApi>();
-
   AdminProvider() {
     getAdmins();
   }
 
+  ApiService apiService = ApiService();
+  AdminApi adminApi = locator<AdminApi>();
   List<Admin> admins;
+
+  //Property state
   ViewState _state = ViewState.Idle;
   ViewState get state => _state;
+
   void setState(ViewState viewState) {
     _state = viewState;
     notifyListeners();
   }
 
+  //Function to get all admin data
   void getAdmins() async {
     admins = await adminApi.getAdmins();
     notifyListeners();
   }
 
+  //Function to add new admin
   Future addAdmin(
       {@required File imageFile,
       @required String nama,
@@ -46,6 +50,7 @@ class AdminProvider extends ChangeNotifier {
     }
   }
 
+  //Function to delete admin
   void deleteAdmin({@required Admin admin}) async {
     int id = admin.id;
     admins.remove(admin);

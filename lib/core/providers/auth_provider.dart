@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthProvider extends ChangeNotifier {
   ApiService apiService = locator<ApiService>();
 
+  //Property state
   ViewState _state = ViewState.Idle;
   ViewState get state => _state;
 
@@ -18,14 +19,17 @@ class AuthProvider extends ChangeNotifier {
   int _idCurrent;
   int get idCurrent => _idCurrent;
 
+  //Property message to login error
+  String _message;
+  String get message => _message;
+
+  //Function to change state
   void setState(ViewState viewState) {
     _state = viewState;
     notifyListeners();
   }
 
-  String _message;
-  String get message => _message;
-
+  //Function to admin login
   Future login({@required String email, @required String password}) async {
     setState(ViewState.Busy);
 
@@ -47,6 +51,7 @@ class AuthProvider extends ChangeNotifier {
     setState(ViewState.Idle);
   }
 
+  //Function save admin data to sharedpreferences
   Future<bool> storeUserData(int id, String nama) async {
     SharedPreferences storage = await SharedPreferences.getInstance();
     _namaCurrent = nama;
@@ -56,6 +61,7 @@ class AuthProvider extends ChangeNotifier {
     return true;
   }
 
+  //Function get admin data for sharedpreferences
   void getUserData() async {
     SharedPreferences storage = await SharedPreferences.getInstance();
     _idCurrent = storage.get('idAdmin');

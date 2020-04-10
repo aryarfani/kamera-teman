@@ -8,7 +8,7 @@
 
     <application
         android:name=".Application"
-        android:label="kamera_teman"
+        android:label="Kamera Teman"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

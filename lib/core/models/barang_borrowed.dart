@@ -5,7 +5,7 @@ class BarangBorrowed {
   int harga;
   int riwayatId;
   int status;
-  int total_biaya;
+  int totalBiaya;
   String gambar;
   String namaMember;
   String tanggalTempo;
@@ -17,7 +17,7 @@ class BarangBorrowed {
       this.nama,
       this.gambar,
       this.namaMember,
-      this.total_biaya,
+      this.totalBiaya,
       this.riwayatId,
       this.status,
       this.tanggalTempo});
@@ -31,7 +31,7 @@ class BarangBorrowed {
       harga: json['harga'],
       gambar: json['gambar'],
       status: json['status'],
-      total_biaya: json['total_biaya'],
+      totalBiaya: json['totalBiaya'],
       namaMember: json['nama_member'],
       tanggalTempo: json['tanggal_tempo'],
     );
