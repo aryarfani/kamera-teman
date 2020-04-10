@@ -1,13 +1,20 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:kamera_teman/core/models/admin.dart';
+import 'package:kamera_teman/core/services/admin_api.dart';
 import 'package:kamera_teman/core/services/api.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
+import 'package:kamera_teman/core/utils/router.dart';
 import 'package:kamera_teman/locator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider extends ChangeNotifier {
+  // AuthProvider() {
+  //   getCurrentAdminData();
+  // }
   ApiService apiService = locator<ApiService>();
 
   //Property state
@@ -16,8 +23,12 @@ class AuthProvider extends ChangeNotifier {
 
   String _namaCurrent;
   String get namaCurrent => _namaCurrent;
+
   int _idCurrent;
   int get idCurrent => _idCurrent;
+
+  Admin _currentAdmin;
+  Admin get currentAdmin => _currentAdmin;
 
   //Property message to login error
   String _message;
@@ -51,6 +62,14 @@ class AuthProvider extends ChangeNotifier {
     setState(ViewState.Idle);
   }
 
+  Future logout(BuildContext context) async {
+    SharedPreferences storage = await SharedPreferences.getInstance();
+    _currentAdmin = null;
+    if (await storage.clear()) {
+      Navigator.of(context).pushReplacementNamed(RouteName.login);
+    }
+  }
+
   //Function save admin data to sharedpreferences
   Future<bool> storeUserData(int id, String nama) async {
     SharedPreferences storage = await SharedPreferences.getInstance();
@@ -62,10 +81,21 @@ class AuthProvider extends ChangeNotifier {
   }
 
   //Function get admin data for sharedpreferences
-  void getUserData() async {
+  Future getUserData() async {
     SharedPreferences storage = await SharedPreferences.getInstance();
     _idCurrent = storage.get('idAdmin');
     _namaCurrent = storage.getString('namaAdmin');
+    notifyListeners();
+  }
+
+  Future getCurrentAdminData() async {
+    print("getCurrentAdminData");
+    await getUserData();
+    try {
+      _currentAdmin = await AdminApi().getAdminById(idCurrent);
+    } on Exception catch (e) {
+      print(e);
+    }
     notifyListeners();
   }
 }

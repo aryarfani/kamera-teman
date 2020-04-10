@@ -1,193 +1,207 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kamera_teman/core/providers/auth_provider.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
 import 'package:kamera_teman/core/utils/router.dart';
+import 'package:provider/provider.dart';
 
 // insertchart
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Provider.of<AuthProvider>(context, listen: false).getCurrentAdminData();
     final mq = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(0, 0),
-        child: Visibility(
-          visible: false,
-          child: AppBar(),
-        ),
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFFE7F3FF), Colors.lightBlue[50]],
-                begin: FractionalOffset(0, 0),
-                end: FractionalOffset(0, 1),
-                stops: [0.0, 1.0],
-              ),
-            ),
-            padding: EdgeInsets.symmetric(horizontal: mq.width * 0.05, vertical: mq.height * 0.05),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          'Dashboard',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 27,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xFF403269),
-                          ),
-                        ),
-                        Text(
-                          'Kamera Teman',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xFF403269),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Spacer(),
-                    Container(
-                      width: 60,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        border: Border.all(color: Colors.white, width: 3, style: BorderStyle.solid),
-                        image: DecorationImage(
-                          image: AssetImage('images/2.jpg'),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
-                ItemDashboardPutih(
-                  mq: mq,
-                  icon: Icons.storage,
-                  title: 'Transaksi',
-                  tapCallback: () {
-                    Navigator.pushNamed(context, RouteName.barangList);
-                  },
-                  children: <Widget>[
-                    ItemRow(title: 'Total Transaksi', subtitle: '28 Transaksi'),
-                    SizedBox(height: 10),
-                    Row(
-                      children: <Widget>[
-                        Expanded(child: ItemRow(title: 'Konfirmasi', subtitle: '3 Barang')),
-                        Expanded(child: ItemRow(title: 'Dipinjam', subtitle: '9 Barang')),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10),
-                Row(
-                  children: <Widget>[
-                    ItemDashboardBasic(
-                      mq: mq,
-                      color: Colors.white,
-                      title: 'Total Member',
-                      tapCallback: () {
-                        Navigator.pushNamed(context, RouteName.memberList);
-                      },
-                      children: <Widget>[
-                        SizedBox(height: 10),
-                        Text(
-                          '20',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xFF2A436C),
-                          ),
-                        ),
-                        SizedBox(height: 12),
-                        Text(
-                          'Terbaru :',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black45,
-                          ),
-                        ),
-                        Text(
-                          'Sora aoi',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xFF2A436C),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Spacer(),
-                    ItemDashboardBasic(
-                      mq: mq,
-                      color: Colors.white,
-                      title: 'Total Admin',
-                      tapCallback: () {
-                        Navigator.pushNamed(context, RouteName.adminList);
-                      },
-                      children: [
-                        SizedBox(height: 12),
-                        Text(
-                          '3',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xFF2A436C),
-                          ),
-                        ),
-                        SizedBox(height: 12),
-                        Text(
-                          'Terbaru :',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black45,
-                          ),
-                        ),
-                        Text(
-                          'Emi Fukada',
-                          style: GoogleFonts.montserrat(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xFF2A436C),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10),
-                ItemDashboardPutih(
-                  mq: mq,
-                  icon: Icons.insert_chart,
-                  title: 'Laporan',
-                  tapCallback: () {
-                    Navigator.pushNamed(context, RouteName.laporan);
-                  },
-                  children: <Widget>[
-                    SizedBox(height: 10),
-                    Row(
-                      children: <Widget>[
-                        Expanded(child: ItemRow(title: 'Total Pemasukan Sebulan', subtitle: 'Rp 980.000,-')),
-                        Expanded(child: ItemRow(title: 'Total Pemasukan Seminggu', subtitle: 'Rp 320.000,-')),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
+    return Consumer<AuthProvider>(
+      builder: (context, model, child) {
+        return Scaffold(
+          appBar: PreferredSize(
+            preferredSize: Size(0, 0),
+            child: Visibility(
+              visible: false,
+              child: AppBar(),
             ),
           ),
-        ),
-      ),
+          body: model.currentAdmin == null
+              ? Center(child: CircularProgressIndicator())
+              : SafeArea(
+                  child: SingleChildScrollView(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xFFE7F3FF), Colors.lightBlue[50]],
+                          begin: FractionalOffset(0, 0),
+                          end: FractionalOffset(0, 1),
+                          stops: [0.0, 1.0],
+                        ),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: mq.width * 0.05, vertical: mq.height * 0.05),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    'Dashboard',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 27,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF403269),
+                                    ),
+                                  ),
+                                  Text(
+                                    'Kamera Teman',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xFF403269),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Spacer(),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.of(context).pushNamed(RouteName.profile);
+                                },
+                                child: Container(
+                                  width: 60,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    border: Border.all(color: Colors.white, width: 3, style: BorderStyle.solid),
+                                    image: DecorationImage(
+                                      image: NetworkImage(linkImage + model.currentAdmin.gambar),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          ItemDashboardPutih(
+                            mq: mq,
+                            icon: Icons.storage,
+                            title: 'Transaksi',
+                            tapCallback: () {
+                              Navigator.pushNamed(context, RouteName.barangList);
+                            },
+                            children: <Widget>[
+                              ItemRow(title: 'Total Transaksi', subtitle: '28 Transaksi'),
+                              SizedBox(height: 10),
+                              Row(
+                                children: <Widget>[
+                                  Expanded(child: ItemRow(title: 'Konfirmasi', subtitle: '3 Barang')),
+                                  Expanded(child: ItemRow(title: 'Dipinjam', subtitle: '9 Barang')),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 10),
+                          Row(
+                            children: <Widget>[
+                              ItemDashboardBasic(
+                                mq: mq,
+                                color: Colors.white,
+                                title: 'Total Member',
+                                tapCallback: () {
+                                  Navigator.pushNamed(context, RouteName.memberList);
+                                },
+                                children: <Widget>[
+                                  SizedBox(height: 10),
+                                  Text(
+                                    '20',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF2A436C),
+                                    ),
+                                  ),
+                                  SizedBox(height: 12),
+                                  Text(
+                                    'Terbaru :',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black45,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Sora aoi',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF2A436C),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Spacer(),
+                              ItemDashboardBasic(
+                                mq: mq,
+                                color: Colors.white,
+                                title: 'Total Admin',
+                                tapCallback: () {
+                                  Navigator.pushNamed(context, RouteName.adminList);
+                                },
+                                children: [
+                                  SizedBox(height: 12),
+                                  Text(
+                                    '3',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF2A436C),
+                                    ),
+                                  ),
+                                  SizedBox(height: 12),
+                                  Text(
+                                    'Terbaru :',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black45,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Emi Fukada',
+                                    style: GoogleFonts.montserrat(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF2A436C),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 10),
+                          ItemDashboardPutih(
+                            mq: mq,
+                            icon: Icons.insert_chart,
+                            title: 'Laporan',
+                            tapCallback: () {
+                              Navigator.pushNamed(context, RouteName.laporan);
+                            },
+                            children: <Widget>[
+                              SizedBox(height: 10),
+                              Row(
+                                children: <Widget>[
+                                  Expanded(child: ItemRow(title: 'Total Pemasukan Sebulan', subtitle: 'Rp 980.000,-')),
+                                  Expanded(child: ItemRow(title: 'Total Pemasukan Seminggu', subtitle: 'Rp 320.000,-')),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+        );
+      },
     );
   }
 }

@@ -19,6 +19,13 @@ class AdminApi extends ApiService {
     return admins;
   }
 
+  Future<Admin> getAdminById(int id) async {
+    var response = await http.get(linkApi + 'admin/$id');
+    var jsonObject = await json.decode(response.body);
+    Admin admin = Admin.fromJson(jsonObject);
+    return admin;
+  }
+
   Future uploadAdmin(File imageFile, String nama, String alamat, String email, String phone, String password) async {
     var compressedImg = await imageService.compressFile(imageFile);
     //* Upload Process

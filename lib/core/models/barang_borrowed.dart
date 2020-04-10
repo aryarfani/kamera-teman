@@ -31,7 +31,7 @@ class BarangBorrowed {
       harga: json['harga'],
       gambar: json['gambar'],
       status: json['status'],
-      totalBiaya: json['totalBiaya'],
+      totalBiaya: json['total_biaya'],
       namaMember: json['nama_member'],
       tanggalTempo: json['tanggal_tempo'],
     );

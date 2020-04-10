@@ -19,9 +19,9 @@ void setupLocator() {
   locator.registerFactory(() => AdminProvider());
   locator.registerFactory(() => MemberProvider());
   locator.registerFactory(() => RiwayatProvider());
+  locator.registerFactory(() => AuthProvider());
 
   locator.registerLazySingleton(() => ImageService());
-  locator.registerLazySingleton(() => AuthProvider());
   locator.registerLazySingleton(() => AdminApi());
   locator.registerLazySingleton(() => MemberApi());
   locator.registerLazySingleton(() => BarangApi());
