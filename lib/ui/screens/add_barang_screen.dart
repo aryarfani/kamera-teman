@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/core/providers/barang_provider.dart';
 import 'package:kamera_teman/core/services/image.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
@@ -18,7 +17,7 @@ class AddBarangScreen extends StatefulWidget {
 
 class _AddBarangScreenState extends State<AddBarangScreen> {
   File _image;
-  ImageService imageService = locator<ImageService>();
+  ImageService imageService = ImageService();
 
   TextEditingController cNama = TextEditingController();
   TextEditingController cStock = TextEditingController();
@@ -33,7 +32,7 @@ class _AddBarangScreenState extends State<AddBarangScreen> {
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
     return ChangeNotifierProvider<BarangProvider>(
-      create: (context) => locator<BarangProvider>(),
+      create: (context) => BarangProvider(),
       child: Consumer<BarangProvider>(
         builder: (context, model, child) {
           return Scaffold(

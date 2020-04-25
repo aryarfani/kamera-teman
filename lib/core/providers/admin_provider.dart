@@ -5,7 +5,6 @@ import 'package:kamera_teman/core/models/admin.dart';
 import 'package:kamera_teman/core/services/admin_api.dart';
 import 'package:kamera_teman/core/services/api.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
-import 'package:kamera_teman/locator.dart';
 
 class AdminProvider extends ChangeNotifier {
   AdminProvider() {
@@ -13,7 +12,7 @@ class AdminProvider extends ChangeNotifier {
   }
 
   ApiService apiService = ApiService();
-  AdminApi adminApi = locator<AdminApi>();
+  AdminApi adminApi = AdminApi();
   List<Admin> admins;
 
   //Property state

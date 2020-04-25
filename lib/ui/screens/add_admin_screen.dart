@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:kamera_teman/core/providers/admin_provider.dart';
 import 'package:kamera_teman/core/services/image.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
-import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/rounded_button.dart';
 import 'package:oktoast/oktoast.dart';
@@ -18,7 +17,7 @@ class AddAdminScreen extends StatefulWidget {
 
 class _AddAdminScreenState extends State<AddAdminScreen> {
   File _image;
-  ImageService imageService = locator<ImageService>();
+  ImageService imageService = ImageService();
 
   TextEditingController cNama = TextEditingController();
   TextEditingController cAlamat = TextEditingController();
@@ -30,7 +29,7 @@ class _AddAdminScreenState extends State<AddAdminScreen> {
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
     return ChangeNotifierProvider<AdminProvider>(
-      create: (context) => locator<AdminProvider>(),
+      create: (context) => AdminProvider(),
       child: Consumer<AdminProvider>(
         builder: (context, model, child) {
           return Scaffold(

@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/core/providers/member_provider.dart';
 import 'package:kamera_teman/core/services/image.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
@@ -18,7 +17,7 @@ class AddMemberScreen extends StatefulWidget {
 
 class _AddMemberScreenState extends State<AddMemberScreen> {
   File _image;
-  ImageService imageService = locator<ImageService>();
+  ImageService imageService = ImageService();
 
   TextEditingController cNama = TextEditingController();
   TextEditingController cAlamat = TextEditingController();
@@ -30,7 +29,7 @@ class _AddMemberScreenState extends State<AddMemberScreen> {
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
     return ChangeNotifierProvider<MemberProvider>(
-      create: (context) => locator<MemberProvider>(),
+      create: (context) => MemberProvider(),
       child: Consumer<MemberProvider>(
         builder: (context, model, child) {
           return Scaffold(

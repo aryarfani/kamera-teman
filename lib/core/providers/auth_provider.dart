@@ -8,11 +8,10 @@ import 'package:kamera_teman/core/services/admin_api.dart';
 import 'package:kamera_teman/core/services/api.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
 import 'package:kamera_teman/core/utils/router.dart';
-import 'package:kamera_teman/locator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider extends ChangeNotifier {
-  ApiService apiService = locator<ApiService>();
+  ApiService apiService = ApiService();
 
   //Property state
   ViewState _state = ViewState.Idle;

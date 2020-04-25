@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/core/providers/auth_provider.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/text_field_widget.dart';
@@ -18,7 +17,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
     return ChangeNotifierProvider<AuthProvider>(
-      create: (context) => locator<AuthProvider>(),
+      create: (context) => AuthProvider(),
       child: Consumer<AuthProvider>(builder: (context, model, child) {
         return Scaffold(
             resizeToAvoidBottomInset: false,

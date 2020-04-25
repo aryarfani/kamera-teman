@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/core/models/barang.dart';
 import 'package:kamera_teman/core/providers/base_provider.dart';
 import 'package:kamera_teman/core/services/barang_api.dart';
@@ -13,7 +12,7 @@ class BarangProvider extends BaseProvider {
     setState(viewState: ViewState.Idle);
   }
 
-  BarangApi barangApi = locator<BarangApi>();
+  BarangApi barangApi = BarangApi();
   List<Barang> barangs;
 
   //Function get all barang from members

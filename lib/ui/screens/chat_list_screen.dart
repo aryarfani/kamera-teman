@@ -11,10 +11,10 @@ class ChatListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
+    Provider.of<ChatProvider>(context, listen: false).getConversationList();
     return Consumer<ChatProvider>(
       builder: (context, chatModel, _) {
         if (chatModel.conversations == null) {
-          chatModel.getConversationList();
           return Scaffold(body: Center(child: CircularProgressIndicator()));
         }
 
@@ -107,7 +107,7 @@ class ChatListScreen extends StatelessWidget {
               ),
             ),
             Text(
-              conversation.lastMessageTime,
+              conversation.lastMessageTime.trim().isEmpty ? '' : conversation.lastMessageTime,
               style: GoogleFonts.openSans(
                 fontSize: 13,
               ),

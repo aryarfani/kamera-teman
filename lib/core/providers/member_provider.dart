@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/core/models/member.dart';
 import 'package:kamera_teman/core/providers/base_provider.dart';
 import 'package:kamera_teman/core/services/member_api.dart';
@@ -12,7 +11,7 @@ class MemberProvider extends BaseProvider {
     getMembers();
   }
 
-  MemberApi memberApi = locator<MemberApi>();
+  MemberApi memberApi = MemberApi();
   List<Member> members;
 
   //Function to get all member data

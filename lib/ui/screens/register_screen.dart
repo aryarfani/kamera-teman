@@ -7,7 +7,6 @@ import 'package:kamera_teman/core/providers/admin_provider.dart';
 import 'package:kamera_teman/core/services/image.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
 import 'package:kamera_teman/core/utils/validate.dart';
-import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/text_field_widget.dart';
 import 'package:oktoast/oktoast.dart';
@@ -20,7 +19,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   File _image;
-  ImageService imageService = locator<ImageService>();
+  ImageService imageService = ImageService();
 
   TextEditingController cNama = TextEditingController();
   TextEditingController cAlamat = TextEditingController();

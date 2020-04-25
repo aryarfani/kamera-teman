@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:kamera_teman/locator.dart';
 import 'package:kamera_teman/core/providers/member_provider.dart';
 import 'package:kamera_teman/ui/widgets/app_header.dart';
 import 'package:kamera_teman/ui/widgets/user_item.dart';
@@ -13,7 +12,7 @@ class MemberScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
     return ChangeNotifierProvider<MemberProvider>(
-      create: (context) => locator<MemberProvider>(),
+      create: (context) => MemberProvider(),
       child: Consumer<MemberProvider>(
         builder: (context, model, child) {
           return Scaffold(
