@@ -63,7 +63,7 @@ class ApiService {
       print(e);
     }
     if (jsonObject == []) {
-      return null;
+      return [];
     }
     List<dynamic> dataJson = jsonObject;
     List<BarangBorrowed> barangs = [];

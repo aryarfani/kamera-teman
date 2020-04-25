@@ -1,32 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:kamera_teman/core/models/barang_borrowed.dart';
-import 'package:kamera_teman/core/providers/base_provider.dart';
 import 'package:kamera_teman/core/services/riwayat_api.dart';
-import 'package:kamera_teman/core/utils/constant.dart';
-import 'package:kamera_teman/locator.dart';
 
-class RiwayatProvider extends BaseProvider {
-  Future getAllRiwayat() async {
-    allRiwayat = await riwayatApi.getAllRiwayat();
-    setState(viewState: ViewState.Idle);
-  }
-
-  RiwayatApi riwayatApi = locator<RiwayatApi>();
+class RiwayatProvider extends ChangeNotifier {
+  RiwayatApi riwayatApi = RiwayatApi();
 
   List<BarangBorrowed> unconfirmedRiwayat;
   List<BarangBorrowed> borrowedRiwayat;
   List<BarangBorrowed> allRiwayat;
 
+  //Function to get all barang from members in riwayat
+  Future getAllRiwayat() async {
+    allRiwayat = await riwayatApi.getAllRiwayat();
+    notifyListeners();
+  }
+
   //Function to get all uncofirmed barang from members in riwayat
   Future getUnconfirmedRiwayat() async {
     unconfirmedRiwayat = await riwayatApi.getUnconfirmedRiwayat();
-    setState(viewState: ViewState.Idle);
+    notifyListeners();
   }
 
   //Function to get all borrowed barang from members in riwayat
   Future getBorrowedRiwayat() async {
     borrowedRiwayat = await riwayatApi.getBorrowedRiwayat();
-    setState(viewState: ViewState.Idle);
+    notifyListeners();
   }
 
   //Function to confirm barang and move to borrowed barang

@@ -1,5 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:oktoast/oktoast.dart';
+import 'package:kamera_teman/core/providers/chat_provider.dart';
 
 Future<dynamic> myBackgroundMessageHandler(Map<String, dynamic> message) async {
   if (message.containsKey('data')) {
@@ -16,6 +16,9 @@ Future<dynamic> myBackgroundMessageHandler(Map<String, dynamic> message) async {
 }
 
 class PushNotificationService {
+  PushNotificationService(this.chatProvider);
+
+  final ChatProvider chatProvider;
   final FirebaseMessaging _fcm = FirebaseMessaging();
 
   Future init() async {
@@ -24,11 +27,20 @@ class PushNotificationService {
       // when app is open (foreground)
       onMessage: (Map<String, dynamic> message) async {
         print('onMessage $message');
-        showToast(message['notification']['body']);
+
+        if (message['notification']['title'] == "Anda mempunyai pesan baru") {
+          // trigger function in provider
+          chatProvider.getMessages(id: chatProvider.currentSavedMessageId);
+        }
       },
       // when app is in background
       onResume: (Map<String, dynamic> message) async {
         print('onResume $message');
+
+        if (message['notification']['title'] == "Anda mempunyai pesan baru") {
+          // trigger function in provider
+          chatProvider.getMessages(id: chatProvider.currentSavedMessageId);
+        }
       },
       // when app has been terminated
       onBackgroundMessage: myBackgroundMessageHandler,

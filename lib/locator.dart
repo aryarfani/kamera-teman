@@ -9,7 +9,6 @@ import 'package:kamera_teman/core/services/api.dart';
 import 'package:kamera_teman/core/services/barang_api.dart';
 import 'package:kamera_teman/core/services/image.dart';
 import 'package:kamera_teman/core/services/member_api.dart';
-import 'package:kamera_teman/core/services/push_notification_service.dart';
 import 'package:kamera_teman/core/services/riwayat_api.dart';
 
 GetIt locator = GetIt.instance;
@@ -27,5 +26,4 @@ void setupLocator() {
   locator.registerLazySingleton(() => BarangApi());
   locator.registerLazySingleton(() => RiwayatApi());
   locator.registerLazySingleton(() => ApiService());
-  locator.registerLazySingleton(() => PushNotificationService());
 }

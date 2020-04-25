@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kamera_teman/core/providers/auth_provider.dart';
@@ -9,10 +10,12 @@ import 'package:provider/provider.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Provider.of<AuthProvider>(context, listen: false).getCurrentAdminData();
     final mq = MediaQuery.of(context).size;
     return Consumer<AuthProvider>(
       builder: (context, model, child) {
+        if (model.currentAdmin == null) {
+          model.getCurrentAdminData();
+        }
         return Scaffold(
           appBar: PreferredSize(
             preferredSize: Size(0, 0),
@@ -73,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(30),
                                     border: Border.all(color: Colors.white, width: 3, style: BorderStyle.solid),
                                     image: DecorationImage(
-                                      image: NetworkImage(linkImage + model.currentAdmin.gambar),
+                                      image: CachedNetworkImageProvider(linkImage + model.currentAdmin.gambar),
                                     ),
                                   ),
                                 ),

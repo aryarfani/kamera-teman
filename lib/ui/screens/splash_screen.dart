@@ -3,10 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kamera_teman/core/providers/chat_provider.dart';
 import 'package:kamera_teman/core/services/push_notification_service.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
 import 'package:kamera_teman/core/utils/router.dart';
-import 'package:kamera_teman/locator.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,11 +16,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  final PushNotificationService _pushNotificationService = locator<PushNotificationService>();
-
   @override
   void initState() {
     startTimer();
+    final PushNotificationService _pushNotificationService =
+        PushNotificationService(Provider.of<ChatProvider>(context, listen: false));
     _pushNotificationService.init();
     super.initState();
   }

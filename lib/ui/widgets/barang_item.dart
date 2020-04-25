@@ -1,10 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
 
 class BarangItem extends StatelessWidget {
-  final NetworkImage image;
+  final String image;
   final String nama;
   final String namaMember;
   final String tanggalTempo;
@@ -122,11 +123,11 @@ class BarangItem extends StatelessWidget {
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
-            child: Image(
+            child: CachedNetworkImage(
               width: 75,
               height: 75,
               fit: BoxFit.cover,
-              image: image,
+              imageUrl: image,
             ),
           ),
           SizedBox(width: 10),

@@ -12,9 +12,6 @@ import 'package:kamera_teman/locator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider extends ChangeNotifier {
-  // AuthProvider() {
-  //   getCurrentAdminData();
-  // }
   ApiService apiService = locator<ApiService>();
 
   //Property state
@@ -85,12 +82,11 @@ class AuthProvider extends ChangeNotifier {
     SharedPreferences storage = await SharedPreferences.getInstance();
     _idCurrent = storage.get('idAdmin');
     _namaCurrent = storage.getString('namaAdmin');
-    notifyListeners();
   }
 
   Future getCurrentAdminData() async {
-    print("getCurrentAdminData");
     await getUserData();
+    print("getCurrentAdminData");
     try {
       _currentAdmin = await AdminApi().getAdminById(idCurrent);
     } on Exception catch (e) {

@@ -21,7 +21,7 @@ class RiwayatApi {
   Future<List<BarangBorrowed>> getAllRiwayat() async {
     var res = await http.get(linkApi + 'getAllRiwayat/');
     print('getAllRiwayat done');
-    List<BarangBorrowed> data;
+    List<BarangBorrowed> data = [];
     if (res.statusCode == 200 && res.body != '[]') {
       data = await ApiService.jsonToBarangBorrowedList(res);
     }
@@ -31,7 +31,7 @@ class RiwayatApi {
   Future<List<BarangBorrowed>> getBorrowedRiwayat() async {
     print('getBorrowedRiwayat working');
     var res = await http.get(linkApi + 'getBorrowedRiwayat/');
-    List<BarangBorrowed> data;
+    List<BarangBorrowed> data = [];
     if (res.statusCode == 200 && res.body != '[]') {
       data = await ApiService.jsonToBarangBorrowedList(res);
     }
@@ -41,7 +41,7 @@ class RiwayatApi {
   Future<List<BarangBorrowed>> getUnconfirmedRiwayat() async {
     print('getUnconfirmedRiwayat working');
     var res = await http.get(linkApi + 'getUnconfirmedRiwayat/');
-    List<BarangBorrowed> data;
+    List<BarangBorrowed> data = [];
     if (res.statusCode == 200 && res.body != '[]') {
       data = await ApiService.jsonToBarangBorrowedList(res);
     }

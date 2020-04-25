@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kamera_teman/core/providers/admin_provider.dart';
 import 'package:kamera_teman/core/providers/auth_provider.dart';
 import 'package:kamera_teman/core/providers/barang_provider.dart';
+import 'package:kamera_teman/core/providers/chat_provider.dart';
 import 'package:kamera_teman/core/providers/member_provider.dart';
 import 'package:kamera_teman/core/providers/riwayat_provider.dart';
 import 'package:kamera_teman/core/utils/router.dart';
@@ -39,9 +40,10 @@ class MyApp extends StatelessWidget {
 }
 
 List<SingleChildWidget> providers = [
-  ChangeNotifierProvider<BarangProvider>(create: (context) => locator<BarangProvider>()),
-  ChangeNotifierProvider<AuthProvider>(create: (context) => locator<AuthProvider>()),
-  ChangeNotifierProvider<RiwayatProvider>(create: (context) => locator<RiwayatProvider>()),
-  ChangeNotifierProvider<MemberProvider>(create: (context) => locator<MemberProvider>()),
-  ChangeNotifierProvider<AdminProvider>(create: (context) => locator<AdminProvider>())
+  ChangeNotifierProvider<BarangProvider>(create: (context) => BarangProvider()),
+  ChangeNotifierProvider<AuthProvider>(create: (context) => AuthProvider()),
+  ChangeNotifierProvider<RiwayatProvider>(create: (context) => RiwayatProvider()),
+  ChangeNotifierProvider<MemberProvider>(create: (context) => MemberProvider()),
+  ChangeNotifierProvider<AdminProvider>(create: (context) => AdminProvider()),
+  ChangeNotifierProvider<ChatProvider>(create: (context) => ChatProvider())
 ];
