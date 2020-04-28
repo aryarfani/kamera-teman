@@ -34,7 +34,7 @@ class _BarangScreenState extends State<BarangScreen> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-
+    Provider.of<RiwayatProvider>(context, listen: false).init();
     return Consumer<RiwayatProvider>(
       builder: (context, model, child) {
         return Scaffold(
@@ -110,7 +110,6 @@ class UncofirmedBarang extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (model.unconfirmedRiwayat == null) {
-      model.getUnconfirmedRiwayat();
       return Center(child: CircularProgressIndicator());
     }
 
@@ -149,7 +148,6 @@ class BorrowedBarang extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (model.borrowedRiwayat == null) {
-      model.getBorrowedRiwayat();
       return Center(child: CircularProgressIndicator());
     }
 
@@ -179,7 +177,6 @@ class AllBarangRiwayat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (model.allRiwayat == null) {
-      model.getAllRiwayat();
       return Center(child: CircularProgressIndicator());
     }
 

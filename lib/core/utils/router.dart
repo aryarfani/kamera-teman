@@ -11,6 +11,7 @@ import 'package:kamera_teman/ui/screens/home_screen.dart';
 import 'package:kamera_teman/ui/screens/laporan_screens.dart';
 
 import 'package:kamera_teman/ui/screens/login_screen.dart';
+import 'package:kamera_teman/ui/screens/main_screen.dart';
 import 'package:kamera_teman/ui/screens/member_screen.dart';
 import 'package:kamera_teman/ui/screens/profile_screen.dart';
 import 'package:kamera_teman/ui/screens/register_screen.dart';
@@ -19,6 +20,7 @@ import 'package:kamera_teman/ui/screens/splash_screen.dart';
 class RouteName {
   static const String splash = 'splash';
   static const String home = 'home';
+  static const String main = 'main';
   static const String login = 'login';
   static const String register = 'register';
   static const String chatList = 'chatList';
@@ -38,6 +40,8 @@ class Router {
     switch (settings.name) {
       case RouteName.home:
         return MaterialPageRoute(builder: (_) => HomeScreen());
+      case RouteName.main:
+        return MaterialPageRoute(builder: (_) => MainScreen());
       case RouteName.login:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case RouteName.splash:

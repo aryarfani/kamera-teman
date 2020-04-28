@@ -31,9 +31,9 @@ class HomeScreen extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Color(0xFFE7F3FF), Colors.lightBlue[50]],
-                          begin: FractionalOffset(0, 0),
-                          end: FractionalOffset(0, 1),
+                          colors: [Styles.darkPurple, Colors.white],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
                           stops: [0.0, 1.0],
                         ),
                       ),
@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                                     style: GoogleFonts.montserrat(
                                       fontSize: 27,
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xFF403269),
+                                      color: Colors.white,
                                     ),
                                   ),
                                   Text(
@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                                     style: GoogleFonts.montserrat(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xFF403269),
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ],
@@ -132,7 +132,7 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    'Sora aoi',
+                                    'Bambang Rino',
                                     style: GoogleFonts.montserrat(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
@@ -169,7 +169,7 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    'Emi Fukada',
+                                    'Rina Fukada',
                                     style: GoogleFonts.montserrat(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,

@@ -71,7 +71,7 @@ class LoginScreen extends StatelessWidget {
                             var res = await model.login(email: cEmail.text, password: cPassword.text);
                             if (res == 200) {
                               showToast('Login berhasil');
-                              Navigator.pushReplacementNamed(context, RouteName.home);
+                              Navigator.pushReplacementNamed(context, RouteName.main);
                             }
                           },
                         ),

@@ -9,6 +9,12 @@ class RiwayatProvider extends ChangeNotifier {
   List<BarangBorrowed> borrowedRiwayat;
   List<BarangBorrowed> allRiwayat;
 
+  init() {
+    getUnconfirmedRiwayat();
+    getBorrowedRiwayat();
+    getAllRiwayat();
+  }
+
   //Function to get all barang from members in riwayat
   Future getAllRiwayat() async {
     allRiwayat = await riwayatApi.getAllRiwayat();
@@ -30,16 +36,14 @@ class RiwayatProvider extends ChangeNotifier {
   //Function to confirm barang and move to borrowed barang
   Future<bool> confirmBarang({@required int id}) async {
     var res = await riwayatApi.confirmBarang(id);
-    getUnconfirmedRiwayat();
-    getBorrowedRiwayat();
+    init();
     return res;
   }
 
   //Function to cancel and move to cancelled barang
   Future<bool> cancelBarang({@required int id}) async {
     var res = await riwayatApi.cancelBarang(id);
-    getUnconfirmedRiwayat();
-    getAllRiwayat();
+    init();
     return res;
   }
 }

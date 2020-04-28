@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kamera_teman/core/providers/auth_provider.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
-import 'package:kamera_teman/core/utils/router.dart';
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -104,14 +103,6 @@ class ProfileScreen extends StatelessWidget {
           ),
           ProfileItem(
             title: 'Pengaturan',
-          ),
-          ProfileItem(
-            navbarCallback: () {
-              Navigator.of(context).pushNamed(RouteName.chatList);
-            },
-            title: 'Customer Service',
-            traillingIcon: true,
-            moveToRiwayatScreen: false,
           ),
           ProfileItem(
             title: 'Versi App',

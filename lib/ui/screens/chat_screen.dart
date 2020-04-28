@@ -18,12 +18,15 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
 
+    //* This function is to make sure that getMessage will be called everytime the screen changes
+    Provider.of<ChatProvider>(context, listen: false).getMessages(id: arguments['id']);
+
     return Consumer<ChatProvider>(
       builder: (context, chatProv, _) {
-        //* if the message is null or the message is not the current conversation
-        // get the messages..
-        if (chatProv.messages == null || chatProv.cekCurrentConversationId(id: arguments['id'])) {
-          chatProv.getMessages(id: arguments['id']);
+        // if (chatProv.messages == null || chatProv.cekCurrentConversationId(id: arguments['id'])) {
+        //   return Scaffold(body: Center(child: CircularProgressIndicator()));
+        // }
+        if (chatProv.messages == null) {
           return Scaffold(body: Center(child: CircularProgressIndicator()));
         }
         return Scaffold(

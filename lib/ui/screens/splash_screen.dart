@@ -9,6 +9,7 @@ import 'package:kamera_teman/core/utils/constant.dart';
 import 'package:kamera_teman/core/utils/router.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:simple_animations/simple_animations.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -30,29 +31,36 @@ class _SplashScreenState extends State<SplashScreen> {
     return Material(
       child: Container(
         color: Styles.coolWhite,
-        child: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Admin \nKamera Teman',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.montserrat(
-                fontSize: 24,
-                fontWeight: FontWeight.w500,
-                color: Color(0xFF403269),
+        child: PlayAnimation<double>(
+          tween: Tween(begin: -300, end: 0),
+          duration: Duration(milliseconds: 1200),
+          curve: Curves.bounceOut,
+          builder: (context, child, value) {
+            return Transform.translate(offset: Offset(0, value), child: child);
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Admin \nKamera Teman',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.montserrat(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF403269),
+                ),
               ),
-            ),
-            SizedBox(height: 10),
-            SvgPicture.asset('images/gambar_camera.svg', width: 300),
-          ],
-        )),
+              SizedBox(height: 10),
+              SvgPicture.asset('images/gambar_camera.svg', width: 300),
+            ],
+          ),
+        ),
       ),
     );
   }
 
   void startTimer() {
-    Timer(Duration(milliseconds: 1500), () {
+    Timer(Duration(milliseconds: 1700), () {
       navigateUser();
     });
   }
@@ -64,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (idCurrent == null) {
       Navigator.pushReplacementNamed(context, RouteName.login);
     } else {
-      Navigator.pushReplacementNamed(context, RouteName.home);
+      Navigator.pushReplacementNamed(context, RouteName.main);
     }
   }
 }

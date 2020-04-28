@@ -20,7 +20,7 @@ class ChatListScreen extends StatelessWidget {
 
         return Scaffold(
           appBar: AppBar(
-            title: Text('Pesan Admin'),
+            title: Text('Daftar Pesan'),
             backgroundColor: Styles.darkPurple,
           ),
           body: Column(
