@@ -77,7 +77,7 @@ class ChatListScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     image: DecorationImage(
-                      image: CachedNetworkImageProvider(linkImage + conversation.gambar),
+                      image: CachedNetworkImageProvider( conversation.gambar),
                       fit: BoxFit.cover,
                     )),
               ),

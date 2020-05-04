@@ -56,7 +56,7 @@ class _BarangScreenState extends State<BarangScreen> with SingleTickerProviderSt
               )
             ],
             title: Text(
-              'Riwayat',
+              'Transaksi',
               style: GoogleFonts.montserrat(
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
@@ -89,7 +89,7 @@ class _BarangScreenState extends State<BarangScreen> with SingleTickerProviderSt
                   child: TabBarView(
                     controller: _tabController,
                     children: [
-                      Tab(child: UncofirmedBarang(model)),
+                      Tab(child: UnconfirmedBarang(model)),
                       Tab(child: BorrowedBarang(model)),
                       Tab(child: AllBarangRiwayat(model)),
                     ],
@@ -104,8 +104,8 @@ class _BarangScreenState extends State<BarangScreen> with SingleTickerProviderSt
   }
 }
 
-class UncofirmedBarang extends StatelessWidget {
-  UncofirmedBarang(this.model);
+class UnconfirmedBarang extends StatelessWidget {
+  UnconfirmedBarang(this.model);
   final RiwayatProvider model;
   @override
   Widget build(BuildContext context) {
@@ -123,7 +123,7 @@ class UncofirmedBarang extends StatelessWidget {
                 nama: barang.nama,
                 namaMember: barang.namaMember,
                 totalBiaya: barang.totalBiaya,
-                image: linkImage + barang.gambar,
+                image: barang.gambar,
                 stock: barang.stock,
                 endIcon: EndIcon.Confirming,
                 confirmCallback: () async {
@@ -162,7 +162,7 @@ class BorrowedBarang extends StatelessWidget {
                 namaMember: barang.namaMember,
                 totalBiaya: barang.totalBiaya,
                 tanggalTempo: barang.tanggalTempo,
-                image: linkImage + barang.gambar,
+                image: barang.gambar,
                 stock: barang.stock,
                 endIcon: EndIcon.Borrowing,
               );
@@ -203,7 +203,7 @@ class AllBarangRiwayat extends StatelessWidget {
                 nama: barang.nama,
                 namaMember: barang.namaMember,
                 totalBiaya: barang.totalBiaya,
-                image: linkImage + barang.gambar,
+                image: barang.gambar,
                 stock: barang.stock,
                 endIcon: buildEnd(),
               );

@@ -1,6 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kamera_teman/core/utils/constant.dart';
 
 class UserItem extends StatelessWidget {
   final String gambar;
@@ -26,7 +26,7 @@ class UserItem extends StatelessWidget {
               width: 70,
               height: 70,
               fit: BoxFit.cover,
-              image: gambar == null ? AssetImage('images/dummy.jpg') : NetworkImage(linkImage + gambar),
+              image: gambar == null ? AssetImage('images/dummy.jpg') : CachedNetworkImageProvider(gambar),
             ),
           ),
           SizedBox(width: 20),

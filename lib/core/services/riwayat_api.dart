@@ -4,22 +4,8 @@ import 'package:kamera_teman/core/services/api.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
 
 class RiwayatApi {
-  Future checkOutPesanan(int id) async {
-    print('checkOutPesanan working');
-    var res = await http.get(linkApi + 'checkOutPesanan/$id');
-    if (res.statusCode == 200) {
-      print('checkOutPesanan success');
-
-      return true;
-    } else {
-      print('checkOutPesanan failed' + res.statusCode.toString());
-
-      return false;
-    }
-  }
-
   Future<List<BarangBorrowed>> getAllRiwayat() async {
-    var res = await http.get(linkApi + 'getAllRiwayat/');
+    var res = await http.get(linkApi + 'riwayat');
     print('getAllRiwayat done');
     List<BarangBorrowed> data = [];
     if (res.statusCode == 200 && res.body != '[]') {
@@ -30,7 +16,7 @@ class RiwayatApi {
 
   Future<List<BarangBorrowed>> getBorrowedRiwayat() async {
     print('getBorrowedRiwayat working');
-    var res = await http.get(linkApi + 'getBorrowedRiwayat/');
+    var res = await http.get(linkApi + 'borrowed-riwayat');
     List<BarangBorrowed> data = [];
     if (res.statusCode == 200 && res.body != '[]') {
       data = await ApiService.jsonToBarangBorrowedList(res);
@@ -40,7 +26,7 @@ class RiwayatApi {
 
   Future<List<BarangBorrowed>> getUnconfirmedRiwayat() async {
     print('getUnconfirmedRiwayat working');
-    var res = await http.get(linkApi + 'getUnconfirmedRiwayat/');
+    var res = await http.get(linkApi + 'unconfirmed-riwayat');
     List<BarangBorrowed> data = [];
     if (res.statusCode == 200 && res.body != '[]') {
       data = await ApiService.jsonToBarangBorrowedList(res);
@@ -50,7 +36,7 @@ class RiwayatApi {
 
   Future confirmBarang(int id) async {
     print('confirmBarang working');
-    var res = await http.get(linkApi + 'confirmBarang/$id');
+    var res = await http.get(linkApi + 'barang/$id/confirm');
     if (res.statusCode == 200) {
       print('confirmBarang success');
       return true;
@@ -62,7 +48,7 @@ class RiwayatApi {
 
   Future cancelBarang(int id) async {
     print('cancelBarang working');
-    var res = await http.get(linkApi + 'cancelBarang/$id');
+    var res = await http.get(linkApi + 'barang/$id/cancel');
     if (res.statusCode == 200) {
       print('cancelBarang success');
       return true;

@@ -10,6 +10,8 @@ import 'package:oktoast/oktoast.dart';
 class ApiService {
   ImageService imageService = ImageService();
 
+  // * boilerplate code
+  // refencing in using delete method
   Future delete(String type, int id) async {
     print('delete is working');
 
@@ -29,7 +31,7 @@ class ApiService {
   }
 
   Future login(String email, String password) async {
-    var url = Uri.parse(linkApi + 'loginAdmin');
+    var url = Uri.parse(linkApi + 'login/admin');
     var res = await http.post(url, body: {
       'email': email,
       'password': password,

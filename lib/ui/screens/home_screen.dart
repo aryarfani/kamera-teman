@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(30),
                                     border: Border.all(color: Colors.white, width: 3, style: BorderStyle.solid),
                                     image: DecorationImage(
-                                      image: CachedNetworkImageProvider(linkImage + model.currentAdmin.gambar),
+                                      image: CachedNetworkImageProvider( model.currentAdmin.gambar),
                                     ),
                                   ),
                                 ),

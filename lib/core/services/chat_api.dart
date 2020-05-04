@@ -9,7 +9,7 @@ class ChatApi {
   //* Function to get conversations
   // res list<Conversation>
   Future getConversations() async {
-    var link = linkApi + "getAllConversation";
+    var link = linkApi + "conversation";
     List<Conversation> conversations = [];
     try {
       var res = await http.get(link);
@@ -30,7 +30,7 @@ class ChatApi {
   // params id
   // res list<Message>
   Future<List<Message>> getMessageById(int id) async {
-    var link = linkApi + "getConversationByUserId/$id";
+    var link = linkApi + "conversation/$id";
     List<Message> messages = [];
     try {
       var res = await http.get(link);
@@ -50,7 +50,7 @@ class ChatApi {
   //* Function to send message
   // Params id user, content of message
   Future addMessage(int id, String content) async {
-    var link = linkApi + "addMessageToConversation/$id";
+    var link = linkApi + "message/$id";
 
     Map<String, String> body = {
       "message": content,

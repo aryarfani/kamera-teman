@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kamera_teman/core/providers/auth_provider.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -44,7 +45,7 @@ class ProfileScreen extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(90),
             child: Image(
-              image: CachedNetworkImageProvider(linkImage + model.currentAdmin.gambar),
+              image: CachedNetworkImageProvider(model.currentAdmin.gambar),
               height: 120,
               width: 120,
               fit: BoxFit.cover,
@@ -103,6 +104,10 @@ class ProfileScreen extends StatelessWidget {
           ),
           ProfileItem(
             title: 'Pengaturan',
+            navbarCallback: () {
+              showToast('Working on progress');
+            },
+            moveToRiwayatScreen: false,
           ),
           ProfileItem(
             title: 'Versi App',

@@ -21,7 +21,7 @@ class RiwayatProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  //Function to get all uncofirmed barang from members in riwayat
+  //Function to get all unconfirmed barang from members in riwayat
   Future getUnconfirmedRiwayat() async {
     unconfirmedRiwayat = await riwayatApi.getUnconfirmedRiwayat();
     notifyListeners();

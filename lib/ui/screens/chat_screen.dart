@@ -36,7 +36,7 @@ class ChatScreen extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: CachedNetworkImage(
-                    imageUrl: linkImage + arguments['gambar'],
+                    imageUrl:  arguments['gambar'],
                     fit: BoxFit.cover,
                     width: 40,
                     height: 40,
@@ -91,7 +91,7 @@ class ChatScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       image: DecorationImage(
-                        image: CachedNetworkImageProvider(linkImage + arguments['gambar']),
+                        image: CachedNetworkImageProvider( arguments['gambar']),
                         fit: BoxFit.cover,
                       )),
                 ),
