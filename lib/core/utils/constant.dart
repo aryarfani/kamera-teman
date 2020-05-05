@@ -11,10 +11,10 @@ class Styles {
   static Color coolWhite = Color(0xFFEBEDF4);
   static List<BoxShadow> boxShadow = [
     BoxShadow(
-      color: Colors.grey.withOpacity(0.2),
-      spreadRadius: 0.5,
+      color: Colors.grey.withOpacity(0.3),
+      spreadRadius: 0.7,
       blurRadius: 2,
-      offset: Offset(0, 1),
+      offset: Offset(0, 4),
     ),
   ];
 }

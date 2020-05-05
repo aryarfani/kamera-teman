@@ -11,24 +11,21 @@ class AdminScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
-    return ChangeNotifierProvider<AdminProvider>(
-      create: (context) => AdminProvider(),
-      child: Consumer<AdminProvider>(
-        builder: (context, model, child) {
-          return Scaffold(
-            body: SafeArea(
-              child: AppHeader(
-                mq: mq,
-                title: 'Daftar Admin',
-                widget: getAdminListUI(model),
-                callback: () {
-                  Navigator.pushNamed(context, RouteName.addAdmin);
-                },
-              ),
+    return Consumer<AdminProvider>(
+      builder: (context, model, child) {
+        return Scaffold(
+          body: SafeArea(
+            child: AppHeader(
+              mq: mq,
+              title: 'Daftar Admin',
+              widget: getAdminListUI(model),
+              callback: () {
+                Navigator.pushNamed(context, RouteName.addAdmin);
+              },
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 

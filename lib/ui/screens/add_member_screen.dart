@@ -28,71 +28,68 @@ class _AddMemberScreenState extends State<AddMemberScreen> {
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
-    return ChangeNotifierProvider<MemberProvider>(
-      create: (context) => MemberProvider(),
-      child: Consumer<MemberProvider>(
-        builder: (context, model, child) {
-          return Scaffold(
-            resizeToAvoidBottomInset: false,
-            resizeToAvoidBottomPadding: false,
-            body: SafeArea(
-              child: AppHeader(
-                mq: mq,
-                iconAdd: false,
-                title: 'Tambah Member',
-                widget: SingleChildScrollView(
-                  child: Column(
-                    children: <Widget>[
-                      Center(
-                        child: _image == null
-                            ? InkWell(
-                                onTap: () {
-                                  buildShowDialog(context);
-                                },
-                                child: Container(
-                                  height: 200,
-                                  child: Center(child: Icon(Icons.add_a_photo, size: 50)),
-                                ),
-                              )
-                            : Container(
-                                constraints: BoxConstraints(maxHeight: 350),
-                                child: Image.file(
-                                  _image,
-                                ),
+    return Consumer<MemberProvider>(
+      builder: (context, model, child) {
+        return Scaffold(
+          resizeToAvoidBottomInset: false,
+          resizeToAvoidBottomPadding: false,
+          body: SafeArea(
+            child: AppHeader(
+              mq: mq,
+              iconAdd: false,
+              title: 'Tambah Member',
+              widget: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    Center(
+                      child: _image == null
+                          ? InkWell(
+                              onTap: () {
+                                buildShowDialog(context);
+                              },
+                              child: Container(
+                                height: 200,
+                                child: Center(child: Icon(Icons.add_a_photo, size: 50)),
                               ),
-                      ),
-                      TextField(
-                        controller: cNama,
-                        decoration: InputDecoration(hintText: "Nama"),
-                      ),
-                      TextField(
-                        controller: cEmail,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(hintText: "Email"),
-                      ),
-                      TextField(
-                        controller: cPhone,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(hintText: "Phone"),
-                      ),
-                      TextField(
-                        controller: cAlamat,
-                        decoration: InputDecoration(hintText: "Alamat"),
-                      ),
-                      TextField(
-                        controller: cPassword,
-                        decoration: InputDecoration(hintText: "Password"),
-                      ),
-                      SizedBox(height: 10),
-                      buildRoundedButton(model)
-                    ],
-                  ),
+                            )
+                          : Container(
+                              constraints: BoxConstraints(maxHeight: 350),
+                              child: Image.file(
+                                _image,
+                              ),
+                            ),
+                    ),
+                    TextField(
+                      controller: cNama,
+                      decoration: InputDecoration(hintText: "Nama"),
+                    ),
+                    TextField(
+                      controller: cEmail,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(hintText: "Email"),
+                    ),
+                    TextField(
+                      controller: cPhone,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(hintText: "Phone"),
+                    ),
+                    TextField(
+                      controller: cAlamat,
+                      decoration: InputDecoration(hintText: "Alamat"),
+                    ),
+                    TextField(
+                      controller: cPassword,
+                      decoration: InputDecoration(hintText: "Password"),
+                    ),
+                    SizedBox(height: 10),
+                    buildRoundedButton(model)
+                  ],
                 ),
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 

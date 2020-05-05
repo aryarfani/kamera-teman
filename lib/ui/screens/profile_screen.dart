@@ -7,29 +7,35 @@ import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
+  // final RefreshController _refreshController = RefreshController(initialRefresh: false);
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
     return Consumer<AuthProvider>(
       builder: (context, model, child) {
-        return model.currentAdmin == null
-            ? Center(child: CircularProgressIndicator())
-            : Scaffold(
-                appBar: AppBar(
-                  backgroundColor: Styles.darkPurple,
-                  elevation: 0,
-                  centerTitle: true,
-                  title: Text(
-                    'Akun Saya',
-                    style: GoogleFonts.montserrat(fontSize: 18),
-                  ),
-                ),
-                body: SingleChildScrollView(
-                  child: Column(
-                    children: <Widget>[_buildHeaderProfile(mq, model), _buildListMenu(context)],
-                  ),
-                ),
-              );
+        if (model.currentAdmin == null) {
+          model.getCurrentAdminData();
+          return Center(child: CircularProgressIndicator());
+        }
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: Styles.darkPurple,
+            elevation: 0,
+            centerTitle: true,
+            title: Text(
+              'Akun Saya',
+              style: GoogleFonts.montserrat(fontSize: 18),
+            ),
+          ),
+          body: RefreshIndicator(
+            onRefresh: model.getCurrentAdminData,
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[_buildHeaderProfile(mq, model), _buildListMenu(context)],
+              ),
+            ),
+          ),
+        );
       },
     );
   }

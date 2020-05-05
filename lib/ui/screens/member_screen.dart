@@ -11,24 +11,21 @@ class MemberScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
-    return ChangeNotifierProvider<MemberProvider>(
-      create: (context) => MemberProvider(),
-      child: Consumer<MemberProvider>(
-        builder: (context, model, child) {
-          return Scaffold(
-            body: SafeArea(
-              child: AppHeader(
-                mq: mq,
-                title: 'Daftar Member',
-                callback: () {
-                  Navigator.pushNamed(context, RouteName.addMember);
-                },
-                widget: getMemberListUI(model),
-              ),
+    return Consumer<MemberProvider>(
+      builder: (context, model, child) {
+        return Scaffold(
+          body: SafeArea(
+            child: AppHeader(
+              mq: mq,
+              title: 'Daftar Member',
+              callback: () {
+                Navigator.pushNamed(context, RouteName.addMember);
+              },
+              widget: getMemberListUI(model),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 

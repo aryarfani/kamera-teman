@@ -1,8 +1,7 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:kamera_teman/core/utils/constant.dart';
 import 'package:kamera_teman/ui/screens/chat_list_screen.dart';
-import 'package:kamera_teman/ui/screens/home_screen.dart';
+import 'package:kamera_teman/ui/screens/dashboard_screen.dart';
 import 'package:kamera_teman/ui/screens/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -18,14 +17,16 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CurvedNavigationBar(
+      bottomNavigationBar: BottomNavigationBar(
         key: _bottomNavigationKey,
-        height: 45,
-        backgroundColor: Styles.darkPurple,
-        items: <Widget>[
-          Icon(Icons.home, size: 30),
-          Icon(Icons.list, size: 30),
-          Icon(Icons.account_circle, size: 30),
+        backgroundColor: Colors.white,
+        selectedItemColor: Styles.darkPurple,
+        currentIndex: _page,
+        iconSize: 25,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+          BottomNavigationBarItem(icon: Icon(Icons.list), title: Text('Message')),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle), title: Text('Profile')),
         ],
         onTap: (index) {
           setState(() {
@@ -34,7 +35,7 @@ class _MainScreenState extends State<MainScreen> {
         },
       ),
       body: IndexedStack(index: _page, children: [
-        HomeScreen(),
+        DashboardScreen(),
         ChatListScreen(),
         ProfileScreen(),
       ]),

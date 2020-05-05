@@ -46,12 +46,17 @@ class HomeScreen extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text(
-                                    'Dashboard',
-                                    style: GoogleFonts.montserrat(
-                                      fontSize: 27,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white,
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.pushNamed(context, RouteName.dashboard);
+                                    },
+                                    child: Text(
+                                      'Dashboard',
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 27,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ),
                                   Text(
@@ -76,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(30),
                                     border: Border.all(color: Colors.white, width: 3, style: BorderStyle.solid),
                                     image: DecorationImage(
-                                      image: CachedNetworkImageProvider( model.currentAdmin.gambar),
+                                      image: CachedNetworkImageProvider(model.currentAdmin.gambar),
                                     ),
                                   ),
                                 ),

@@ -31,67 +31,64 @@ class _AddBarangScreenState extends State<AddBarangScreen> {
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
-    return ChangeNotifierProvider<BarangProvider>(
-      create: (context) => BarangProvider(),
-      child: Consumer<BarangProvider>(
-        builder: (context, model, child) {
-          return Scaffold(
-            resizeToAvoidBottomInset: false,
-            resizeToAvoidBottomPadding: false,
-            body: SafeArea(
-              child: AppHeader(
-                mq: mq,
-                iconAdd: false,
-                title: 'Tambah Barang',
-                widget: SingleChildScrollView(
-                  reverse: true,
-                  child: Container(
-                    padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                    child: Column(
-                      children: <Widget>[
-                        Center(
-                          child: _image == null
-                              ? InkWell(
-                                  onTap: () {
-                                    buildShowDialog(context);
-                                  },
-                                  child: Container(
-                                    height: 200,
-                                    child: Center(child: Icon(Icons.add_a_photo, size: 50)),
-                                  ),
-                                )
-                              : Container(
-                                  constraints: BoxConstraints(maxHeight: 350),
-                                  child: Image.file(
-                                    _image,
-                                  ),
+    return Consumer<BarangProvider>(
+      builder: (context, model, child) {
+        return Scaffold(
+          resizeToAvoidBottomInset: false,
+          resizeToAvoidBottomPadding: false,
+          body: SafeArea(
+            child: AppHeader(
+              mq: mq,
+              iconAdd: false,
+              title: 'Tambah Barang',
+              widget: SingleChildScrollView(
+                reverse: true,
+                child: Container(
+                  padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                  child: Column(
+                    children: <Widget>[
+                      Center(
+                        child: _image == null
+                            ? InkWell(
+                                onTap: () {
+                                  buildShowDialog(context);
+                                },
+                                child: Container(
+                                  height: 200,
+                                  child: Center(child: Icon(Icons.add_a_photo, size: 50)),
                                 ),
-                        ),
-                        TextField(
-                          controller: cNama,
-                          decoration: InputDecoration(hintText: "Nama"),
-                        ),
-                        TextField(
-                          controller: cStock,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(hintText: "Stock"),
-                        ),
-                        TextField(
-                          controller: cHarga,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(hintText: "Harga"),
-                        ),
-                        SizedBox(height: 10),
-                        buildRoundedButton(model)
-                      ],
-                    ),
+                              )
+                            : Container(
+                                constraints: BoxConstraints(maxHeight: 350),
+                                child: Image.file(
+                                  _image,
+                                ),
+                              ),
+                      ),
+                      TextField(
+                        controller: cNama,
+                        decoration: InputDecoration(hintText: "Nama"),
+                      ),
+                      TextField(
+                        controller: cStock,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(hintText: "Stock"),
+                      ),
+                      TextField(
+                        controller: cHarga,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(hintText: "Harga"),
+                      ),
+                      SizedBox(height: 10),
+                      buildRoundedButton(model)
+                    ],
                   ),
                 ),
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 
