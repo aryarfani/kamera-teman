@@ -30,11 +30,11 @@ class BarangScreen extends StatelessWidget {
   }
 
   Widget getBarangListUI(BarangProvider model) {
-    var members = model.barangs;
-    return members == null
+    var barangs = model.barangs;
+    return barangs == null
         ? Center(child: CupertinoActivityIndicator())
         : ListView.builder(
-            itemCount: members.length,
+            itemCount: barangs.length,
             itemBuilder: (context, index) {
               return Container(
                   margin: EdgeInsets.only(bottom: 10),
@@ -46,13 +46,14 @@ class BarangScreen extends StatelessWidget {
                         color: Colors.redAccent,
                         icon: Icons.delete,
                         onTap: () {
-                          model.deleteBarang(barang: members[index]);
+                          model.deleteBarang(barang: barangs[index]);
                         },
                       )
                     ],
                     child: UserItem(
-                      nama: members[index].nama,
-                      gambar: members[index].gambar,
+                      nama: barangs[index].nama,
+                      alamat: "Stock : " + barangs[index].stock.toString(),
+                      gambar: barangs[index].gambar,
                     ),
                   ));
             });
